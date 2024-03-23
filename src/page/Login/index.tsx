@@ -6,6 +6,7 @@ import Button from "component/Button";
 import { H } from "component/H";
 import { useNavigate } from "react-router-dom";
 import useAxios from "hook/useAxios";
+import LottieLogo from "component/LottieLogo";
 
 const LoginContent = styled.div`
   padding: 24px;
@@ -20,11 +21,6 @@ const LoginContent = styled.div`
   height: 100%;
   align-items: center;
   justify-content: center;
-`;
-
-const StyledImage = styled.img`
-  width: 120px;
-  height: 120px;
 `;
 
 const InputStyled = styled.div`
@@ -69,7 +65,7 @@ const Login = () => {
 
   return (
     <LoginContent>
-      <StyledImage src={logoLarge} />
+      <LottieLogo size={200} />
       <InputStyled>
         <TextInput
           placeholder="아이디"

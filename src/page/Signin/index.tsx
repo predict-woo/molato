@@ -1,10 +1,10 @@
 import { useState } from "react";
-import logoLarge from "assets/logo-large.svg";
 import styled from "styled-components";
 import TextInput from "component/TextInput";
 import Button from "component/Button";
 import { H } from "component/H";
 import useAxios from "hook/useAxios";
+import LottieLogo from "component/LottieLogo";
 
 const SigninContent = styled.div`
   padding: 24px;
@@ -63,7 +63,7 @@ const Signin = () => {
 
   return (
     <SigninContent>
-      <StyledImage src={logoLarge} />
+      <LottieLogo size={200} />
       <InputStyled>
         <TextInput
           placeholder="아이디"
