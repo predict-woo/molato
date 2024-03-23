@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/logo.svg";
 import chevronLeft from "../assets/chevron-left.svg";
