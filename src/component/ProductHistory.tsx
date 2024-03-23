@@ -17,6 +17,7 @@ const ProductInfoInner = styled.div`
   gap: 8px;
   border-radius: 16px;
   background: var(--white, #fff);
+  box-shadow: -1px 2px 4px 0px rgba(0, 0, 0, 0.25);
   border: 1px solid var(--gray-light, #eee);
 `;
 
