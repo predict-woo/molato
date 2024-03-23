@@ -9,6 +9,7 @@ type Props = {
 };
 
 const ProductInfoInner = styled.div`
+  width: 100%;
   display: flex;
   padding: 12px;
   flex-direction: row;
@@ -19,6 +20,7 @@ const ProductInfoInner = styled.div`
   background: var(--white, #fff);
   box-shadow: -1px 2px 4px 0px rgba(0, 0, 0, 0.25);
   border: 1px solid var(--gray-light, #eee);
+  box-sizing: border-box;
 `;
 
 const ProductImage = styled.img`
