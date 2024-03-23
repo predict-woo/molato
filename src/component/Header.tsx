@@ -57,7 +57,12 @@ const Header = () => {
     <TotalContainer>
       <HeaderInner>
         {path2Type(pathname) === "logo" ? (
-          <img src={logo} alt="logo" />
+          <img
+            src={logo}
+            alt="logo"
+            onClick={() => (window.location.href = "/")}
+            style={{ cursor: "pointer" }}
+          />
         ) : (
           <HeaderNav>
             <svg
