@@ -102,7 +102,7 @@ const HistorySentItem = () => {
           <Title>
             <H>{giftDetail?.senderName}</H>님에게
             <br />
-            <H>답장</H>을 보내보세요
+            <H>답장</H>을 받았어요
           </Title>
 
           <TextInput
