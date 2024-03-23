@@ -23,3 +23,6 @@ export const HighlightedMainText = styled.p`
   margin: 0;
   padding: 0;
 `;
+export const MainTextWrapper = styled.div`
+  display: inline-block;
+`;

@@ -1,5 +1,9 @@
 import Button from "component/Button";
-import { HighlightedMainText, MainText } from "./atoms/MainText";
+import {
+  HighlightedMainText,
+  MainText,
+  MainTextWrapper,
+} from "./atoms/MainText";
 import styled from "styled-components";
 import UserCard from "component/UserCard";
 import { useState } from "react";
@@ -7,10 +11,6 @@ import { useState } from "react";
 type Props = {
   nextStep: () => void;
 };
-
-const MainTextWrapper = styled.div`
-  display: inline-block;
-`;
 
 const UserCardList = styled.div`
   display: flex;
