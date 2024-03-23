@@ -5,11 +5,12 @@ type Props = {
   name: string;
   description: string;
   selected?: boolean;
+  onClick?: () => void;
 };
 
 const UserCardInner = styled.div<{ selected: boolean }>`
+  flex: 1;
   display: flex;
-  width: 100%;
   padding: 12px;
   align-items: center;
   gap: 12px;
@@ -17,7 +18,10 @@ const UserCardInner = styled.div<{ selected: boolean }>`
   background: var(--white, #fff);
   box-shadow: -1px 2px 4px 0px rgba(0, 0, 0, 0.25);
   border: ${(props) =>
-    props.selected ? "border: 1px solid var(--primary, #D25151);" : "none"};
+    props.selected
+      ? "1px solid var(--primary, #D25151)"
+      : "1px solid var(--white, #fff)"};
+  cursor: pointer;
 `;
 
 const ImageOuter = styled.div`
@@ -66,9 +70,9 @@ const TextDescription = styled.div`
   line-height: normal;
 `;
 
-const UserCard = ({ profile, name, description, selected }: Props) => {
+const UserCard = ({ profile, name, description, selected, onClick }: Props) => {
   return (
-    <UserCardInner selected={!!selected}>
+    <UserCardInner selected={!!selected} onClick={onClick}>
       <ImageOuter>
         <StyledImage src={profile} alt="profile" />
       </ImageOuter>

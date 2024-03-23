@@ -5,6 +5,8 @@ import Home from "page/Home";
 import styled from "styled-components";
 import Present from "page/Present";
 import BottomNavigation from "component/BottomNavigationBar.tsx";
+import History from "page/History";
+import HistoryItem from "page/History/HistoryItem";
 
 const AppInner = styled.div`
   display: flex;
@@ -13,7 +15,6 @@ const AppInner = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background-color: #f0f0f0;
 `;
 
@@ -21,8 +22,6 @@ const AppContent = styled.div`
   background-color: #fff;
   max-width: 500px;
   width: 100%;
-  overflow: hidden;
-  height: 100vh;
 `;
 
 function App() {
@@ -33,6 +32,8 @@ function App() {
           <Route path="/" element={<Header />}>
             <Route index element={<Home />} />
             <Route path="/present" element={<Present />} />
+            <Route path="/history/:id" element={<HistoryItem />} />
+            <Route path="/history" element={<History />} />
           </Route>
         </Routes>
       </AppContent>
