@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import present from "../assets/present.svg";
 import present_selected from "../assets/present-selected.svg";
 import molato from "../assets/molato.svg";
@@ -28,26 +28,22 @@ const IconContainer = styled.div`
 `;
 
 const BottomNavigation: React.FC = () => {
-  const [activeNav, setActiveNav] = useState("molato");
+  const { pathname } = useLocation();
   return (
     <BottomNavigationBar>
       <IconContainer>
-        <Link
-          to="/history"
-          className="nav-link"
-          onClick={() => setActiveNav("history")}
-        >
-          <img src={activeNav == "history" ? present_selected : present}></img>
+        <Link to="/history" className="nav-link">
+          <img src={pathname == "/history" ? present_selected : present}></img>
         </Link>
       </IconContainer>
       <IconContainer>
-        <Link to="/" className="nav-link" onClick={() => setActiveNav("home")}>
+        <Link to="/present" className="nav-link">
           <img src={molato} />
         </Link>
       </IconContainer>
       <IconContainer>
-        <Link to="/my" className="nav-link" onClick={() => setActiveNav('my')}>
-          <img src={activeNav == 'my' ? user_selected : user} />
+        <Link to="/my" className="nav-link">
+          <img src={pathname == "/my" ? user_selected : user} />
         </Link>
       </IconContainer>
     </BottomNavigationBar>
