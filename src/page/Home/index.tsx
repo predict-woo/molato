@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import TextBubble from "./TextBubble";
+import TextInput from "component/TextInput";
 
 const HighlightedContent = styled.span`
   color: var(--primary, #d25151);
@@ -28,6 +29,7 @@ const Home = () => {
         <br />
         뭔지 다 같이 함께 열어볼까또?
       </TextBubble>
+      <TextInput type="default" placeholder="이름을 입력해주세요" />
     </HomeInner>
   );
 };
