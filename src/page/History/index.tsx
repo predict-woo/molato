@@ -135,7 +135,7 @@ const History = () => {
         <ProductHistoryList
           title={
             <ProductListHeader>
-              <H>아직 확인하지 않은 답장</H>이 1개 있어요
+              <H>아직 확인하지 않은 답장</H>이 {newReply?.length}개 있어요
             </ProductListHeader>
           }
           products={newReply || []}

@@ -1,19 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Profile from "./atoms/Profile";
 import styled from "styled-components";
 import Button from "component/Button";
-
-type User = {
-  profile: string;
-  name: string;
-  description: string;
-};
-
-const currentUser: User = {
-  profile: "/profile/default.svg",
-  name: "익명의 몰라또",
-  description: "저에게 선물을 주세또",
-};
+import { User } from "types";
+import useAxios from "hook/useAxios";
 
 const MyInner = styled.div`
   display: flex;
@@ -22,19 +12,52 @@ const MyInner = styled.div`
 `;
 
 const My = () => {
-  const [profile, setProfile] = useState<User>(currentUser);
-  const saveProfile = (profile: string, name: string, description: string) => {
-    setProfile({ profile, name, description });
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+  const axios = useAxios();
+  const getUser = async () => {
+    const res = await axios({
+      url: "/user",
+      method: "get",
+    });
+    setCurrentUser(res);
+    console.log(res);
+  };
+  const setUser = async (user: User) => {
+    const res = await axios({
+      url: "/user",
+      method: "post",
+      data: {
+        profilePhoto: user!.profilePhoto,
+        name: user!.name,
+        introduction: user!.introduction,
+      },
+      onSuccess: (data) => {
+        console.log("data", data);
+        setCurrentUser(data);
+      },
+    });
+    console.log(res);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const saveProfile = (
+    profilePhoto: string,
+    name: string,
+    introduction: string
+  ) => {
+    if (!currentUser) return;
+    const newUser = { ...currentUser, profilePhoto, name, introduction };
+    setCurrentUser(newUser);
+    setUser(newUser);
   };
 
   return (
     <MyInner>
-      <Profile
-        profile={profile.profile}
-        name={profile.name}
-        description={profile.description}
-        saveProfile={saveProfile}
-      />
+      {currentUser && <Profile user={currentUser} saveProfile={saveProfile} />}
       <Button text="로그아웃" onClick={() => console.log("로그아웃")} />
     </MyInner>
   );

@@ -5,12 +5,15 @@ import edit from "../../../assets/edit.svg";
 import editDisabled from "../../../assets/edit-disabled.svg";
 import { useState } from "react";
 import TextInput from "component/TextInput";
+import { User } from "types";
 
 type Props = {
-  profile: string;
-  name: string;
-  description: string;
-  saveProfile: (profile: string, name: string, description: string) => void;
+  user: User;
+  saveProfile: (
+    profilePhoto: string,
+    name: string,
+    introduction: string
+  ) => void;
 };
 
 const ProfileInner = styled.div`
@@ -48,14 +51,14 @@ const StyledImage = styled.img`
   flex-shrink: 0;
 `;
 
-const DescriptionOuter = styled.div`
+const IntroductionOuter = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 12px;
 `;
 
-const DescriptionHeader = styled.div`
+const IntroductionHeader = styled.div`
   display: flex;
   gap: 12px;
   padding: 0 8px;
@@ -87,7 +90,7 @@ const ProfileName = styled.div`
   line-height: 28px;
 `;
 
-const ProfileDescription = styled.div`
+const ProfileIntroduction = styled.div`
   color: var(--black, #333);
   font-family: Pretendard;
   font-size: 16px;
@@ -98,16 +101,16 @@ const ProfileDescription = styled.div`
 `;
 
 enum EditMode {
-  IMAGE,
-  NAME,
+  //   IMAGE,
+  //   NAME,
   DESCRIPTION,
 }
 
-const Profile = ({ profile, name, description, saveProfile }: Props) => {
+const Profile = ({ user, saveProfile }: Props) => {
   const [editMode, setEditMode] = useState<EditMode | null>(null);
-  const [profileName, setProfileName] = useState<string>(name);
-  const [profileDescription, setProfileDescription] =
-    useState<string>(description);
+  const [profileIntroduction, setProfileIntroduction] = useState<string>(
+    user.introduction
+  );
 
   const editButton = (changeTo: EditMode) => {
     return editMode === null ? (
@@ -129,7 +132,7 @@ const Profile = ({ profile, name, description, saveProfile }: Props) => {
           alt="check"
           onClick={() => {
             setEditMode(null);
-            saveProfile(profile, profileName, profileDescription);
+            saveProfile(user.profilePhoto, user.name, profileIntroduction);
           }}
         />
         <img src={close} alt="close" onClick={() => setEditMode(null)} />
@@ -141,46 +144,32 @@ const Profile = ({ profile, name, description, saveProfile }: Props) => {
     <ProfileInner>
       <BasicContent>
         <ImageOuter>
-          <StyledImage src={profile} alt="profile" />
+          <StyledImage src={user.profilePhoto} alt="profile" />
         </ImageOuter>
         <NameOuter>
-          {editMode === EditMode.NAME ? (
-            <TextInput
-              placeholder={name}
-              type="default"
-              value={profileName}
-              onChange={(e) =>
-                setProfileName((e.target as HTMLInputElement).value)
-              }
-            />
-          ) : (
-            <ProfileName>{name}</ProfileName>
-          )}
-          {editMode === EditMode.NAME
-            ? saveButton()
-            : editButton(EditMode.NAME)}
+          <ProfileName>{user.name}</ProfileName>
         </NameOuter>
       </BasicContent>
-      <DescriptionOuter>
-        <DescriptionHeader>
+      <IntroductionOuter>
+        <IntroductionHeader>
           <div>한 줄 소개</div>
           {editMode === EditMode.DESCRIPTION
             ? saveButton()
             : editButton(EditMode.DESCRIPTION)}
-        </DescriptionHeader>
+        </IntroductionHeader>
         {editMode === EditMode.DESCRIPTION ? (
           <TextInput
-            placeholder={description}
+            placeholder={user.introduction}
             type="default"
-            value={profileDescription}
+            value={profileIntroduction}
             onChange={(e) =>
-              setProfileDescription((e.target as HTMLInputElement).value)
+              setProfileIntroduction((e.target as HTMLInputElement).value)
             }
           />
         ) : (
-          <ProfileDescription>{description}</ProfileDescription>
+          <ProfileIntroduction>{user.introduction}</ProfileIntroduction>
         )}
-      </DescriptionOuter>
+      </IntroductionOuter>
     </ProfileInner>
   );
 };
