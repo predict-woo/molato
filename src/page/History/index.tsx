@@ -56,7 +56,7 @@ const History = () => {
   const [newGift, setNewGift] = useState<HistoryItem[]>();
   const [newReply, setNewReply] = useState<HistoryItem[]>();
   const [recieved, setRecieved] = useState<HistoryItem[]>();
-  const [send, setSend] = useState<HistoryItem[]>();
+  const [sended, setSended] = useState<HistoryItem[]>();
 
   const getNewGift = async () => {
     await axios({
@@ -90,10 +90,10 @@ const History = () => {
 
   const getSend = async () => {
     await axios({
-      url: "gift/received",
+      url: "gift/sended",
       method: "get",
       onSuccess: (data) => {
-        setSend(data);
+        setSended(data);
       },
     });
   };
@@ -101,7 +101,7 @@ const History = () => {
   console.log("newGift", newGift);
   console.log("newReply", newReply);
   console.log("recieved", recieved);
-  console.log("send", send);
+  console.log("send", sended);
 
   useEffect(() => {
     getNewGift();
@@ -115,7 +115,10 @@ const History = () => {
       <Title>
         <H>몰라또</H>와
         <br />
-        <H>총 32회의 선물</H>을 주고 받은 기록이에요
+        <H>
+          총 {recieved && sended && recieved.length + sended.length}회의 선물
+        </H>
+        을 주고 받은 기록이에요
       </Title>
       <UncheckedProducts>
         <ProductHistoryList
@@ -142,7 +145,7 @@ const History = () => {
       <ProductHistoryList
         title={
           <ProductListHeader>
-            <H>받은 선물</H> 목록 (16개)
+            <H>받은 선물</H> 목록 ({recieved?.length}개)
           </ProductListHeader>
         }
         products={recieved || []}
@@ -151,10 +154,10 @@ const History = () => {
       <ProductHistoryList
         title={
           <ProductListHeader>
-            <H>준 선물</H> 목록 (14개)
+            <H>준 선물</H> 목록 ({sended?.length}개)
           </ProductListHeader>
         }
-        products={send || []}
+        products={sended || []}
         foldable={true}
       />
     </HistoryContent>
