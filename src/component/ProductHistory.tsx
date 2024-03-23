@@ -82,7 +82,7 @@ const ProductHistory = ({
       <ProductTextOuter>
         <div style={{ display: "flex" }}>
           <ProductTitle>{itemName}</ProductTitle>
-          <ProductDate>{date.split('T')[0]}</ProductDate>
+          <ProductDate>{date}</ProductDate>
         </div>
         <ProductFrom>{from}</ProductFrom>
       </ProductTextOuter>
