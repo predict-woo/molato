@@ -67,7 +67,7 @@ const HistoryItem = () => {
       <TextInput
         placeholder=""
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={(e) => setMessage((e.target as HTMLTextAreaElement).value)}
         type="default"
         multiline
         disabled={sent}
