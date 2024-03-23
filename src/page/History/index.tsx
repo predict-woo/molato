@@ -78,7 +78,7 @@ const History = () => {
     });
   };
 
-  const getRecieved = async () => {
+  const getReceived = async () => {
     await axios({
       url: "gift/received",
       method: "get",
@@ -106,7 +106,7 @@ const History = () => {
   useEffect(() => {
     getNewGift();
     getNewReply();
-    getRecieved();
+    getReceived();
     getSend();
   }, []);
 
