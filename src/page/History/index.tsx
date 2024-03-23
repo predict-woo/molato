@@ -2,6 +2,8 @@ import { H } from "component/H";
 
 import styled from "styled-components";
 import ProductHistoryList from "./ProductHistoryList";
+import useAxios from "hook/useAxios";
+import { useEffect, useState } from "react";
 
 const HistoryContent = styled.div`
   display: flex;
@@ -40,7 +42,35 @@ const UncheckedProducts = styled.div`
   border: 1px solid var(--primary, #d25151);
 `;
 
+export type HistoryItem = {
+  id: string;
+  itemId: string;
+  itemImage: string;
+  itemName: string;
+  date: string;
+  from: string;
+};
+
 const History = () => {
+  const axios = useAxios();
+  const [newGift, setNewGift] = useState<HistoryItem[]>();
+
+  const getNewGift = async () => {
+    await axios({
+      url: "/user/newGift",
+      method: "get",
+      onSuccess: (data) => {
+        setNewGift(data);
+      },
+    });
+  };
+
+  console.log(newGift);
+
+  useEffect(() => {
+    getNewGift();
+  }, []);
+
   return (
     <HistoryContent>
       <Title>
@@ -52,25 +82,10 @@ const History = () => {
         <ProductHistoryList
           title={
             <ProductListHeader>
-              <H>아직 확인하지 않은 선물</H>이 2개 있어요
+              <H>아직 확인하지 않은 선물</H>이 {newGift?.length}개 있어요
             </ProductListHeader>
           }
-          products={[
-            {
-              price: 1000,
-              image: "beatles",
-              item: "포도",
-              date: "2024.03.23",
-              from: "용가리",
-            },
-            {
-              price: 1000,
-              image: "grape_jelly",
-              item: "사과",
-              date: "2024.03.23",
-              from: "용가리",
-            },
-          ]}
+          products={newGift || []}
           foldable={false}
         />
       </UncheckedProducts>

@@ -1,15 +1,11 @@
 import ProductHistory from "component/ProductHistory";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { HistoryItem } from ".";
 
 type Props = {
-  products: {
-    price: number;
-    image: string;
-    item: string;
-    date: string;
-    from: string;
-  }[];
+  products: HistoryItem[];
   title: React.ReactNode;
   foldable?: boolean;
 };
@@ -49,6 +45,7 @@ const ProductListHeader = styled.div`
 
 const ProductHistoryList = ({ products, foldable, title }: Props) => {
   const [folded, setFolded] = useState<boolean>(false);
+  const navigation = useNavigate();
   return (
     <ProductHistoryInner>
       <ProductListHeader>
@@ -75,15 +72,15 @@ const ProductHistoryList = ({ products, foldable, title }: Props) => {
       </ProductListHeader>
 
       <ProductListInner folded={folded}>
-        {products.map((product, index) => (
+        {products.map((product) => (
           <ProductHistory
-            key={index}
-            price={product.price}
-            image={product.image}
-            item={product.item}
+            key={product.id}
+            id={product.id}
+            itemImage={product.itemImage}
+            itemName={product.itemName}
             date={product.date}
             from={product.from}
-            onClick={() => (window.location.href = `/history/${index}`)}
+            onClick={() => navigation(`/history/${product.id}`)}
           />
         ))}
       </ProductListInner>

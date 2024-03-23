@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { getImageUrl } from "utils";
 
 type Props = {
   price: number;
@@ -54,9 +53,9 @@ const ProductDescription = styled.div`
   line-height: 20px;
 `;
 
-const ProductInfo = ({ price, image, title, description }: Props) => (
+const ProductInfo = ({ image, title, description }: Props) => (
   <ProductInfoInner>
-    <ProductImage src={getImageUrl(price, image)}></ProductImage>
+    <ProductImage src={image}></ProductImage>
     <ProductTextOuter>
       <ProductTitle>{title}</ProductTitle>
       <ProductDescription>{description}</ProductDescription>

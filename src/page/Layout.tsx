@@ -1,5 +1,7 @@
 import BottomNavigation from "component/BottomNavigationBar";
 import Header from "component/Header";
+import useAxios from "hook/useAxios";
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
@@ -17,6 +19,18 @@ const RouteContainer = styled.div`
 `;
 
 const Layout = () => {
+  const axios = useAxios();
+
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      await axios({
+        url: "/auth/refresh",
+        method: "post",
+      });
+    }, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div>
       <TotalContainer>

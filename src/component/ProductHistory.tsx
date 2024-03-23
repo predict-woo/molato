@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { getImageUrl } from "utils";
 
 type Props = {
-  price: number;
-  image: string;
-  item: string;
+  id: string;
+  itemImage: string;
+  itemName: string;
   date: string;
   from: string;
   onClick?: () => void;
@@ -70,13 +69,19 @@ const ProductFrom = styled.div`
   line-height: 20px;
 `;
 
-const ProductHistory = ({ price, image, item, date, from, onClick }: Props) => {
+const ProductHistory = ({
+  itemImage,
+  itemName,
+  date,
+  from,
+  onClick,
+}: Props) => {
   return (
     <ProductInfoInner onClick={onClick}>
-      <ProductImage src={getImageUrl(price, image)}></ProductImage>
+      <ProductImage src={itemImage}></ProductImage>
       <ProductTextOuter>
         <div style={{ display: "flex" }}>
-          <ProductTitle>{item}</ProductTitle>
+          <ProductTitle>{itemName}</ProductTitle>
           <ProductDate>{date}</ProductDate>
         </div>
         <ProductFrom>{from}</ProductFrom>

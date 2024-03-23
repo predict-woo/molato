@@ -5,6 +5,8 @@ import Button from "component/Button";
 import { H } from "component/H";
 import useAxios from "hook/useAxios";
 import LottieLogo from "component/LottieLogo";
+import { checkIdPassword } from "utils";
+import { useNavigate } from "react-router-dom";
 
 const SigninContent = styled.div`
   padding: 24px;
@@ -44,6 +46,7 @@ const Signin = () => {
   const [password, setPassword] = useState<string>("");
   const [passwordRepeat, setPasswordRepeat] = useState<string>("");
   const axios = useAxios();
+  const navigate = useNavigate();
 
   const handleSignin = async () => {
     await axios({
@@ -53,7 +56,29 @@ const Signin = () => {
         name: id,
         password,
       },
+      onSuccess: () => {
+        alert("회원가입에 성공했습니다");
+        navigate("/login");
+      },
     });
+  };
+
+  const getErrorMessage = () => {
+    if (password !== passwordRepeat) {
+      return (
+        <SignInText>
+          <H>비밀번호가 일치하지 않습니다</H>
+        </SignInText>
+      );
+    }
+    if (!checkIdPassword(id, password)) {
+      return (
+        <SignInText>
+          <H>아이디는 4자 이상, 비밀번호는 6자 이상이여야 합니다</H>
+        </SignInText>
+      );
+    }
+    return "";
   };
 
   return (
@@ -80,15 +105,12 @@ const Signin = () => {
           }
           type="password"
         />
-        {password !== passwordRepeat && (
-          <SignInText>
-            <H>비밀번호가 일치하지 않습니다</H>
-          </SignInText>
-        )}
-
+        {getErrorMessage()}
         <Button
           text="회원가입"
-          disabled={password !== passwordRepeat}
+          disabled={
+            password !== passwordRepeat || !checkIdPassword(id, password)
+          }
           onClick={() => handleSignin()}
         />
       </InputStyled>

@@ -2,7 +2,8 @@ import Button from "component/Button";
 import { H } from "component/H";
 import ProductInfo from "component/ProductInfo";
 import TextInput from "component/TextInput";
-import { useState } from "react";
+import useAxios from "hook/useAxios";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import styled from "styled-components";
@@ -31,35 +32,99 @@ const Divider = styled.div`
   align-self: stretch;
 `;
 
+export type GiftDetail = {
+  deletedAt: string | null;
+  id: string;
+  itemId: string;
+  letter: string;
+  receivedAt: string;
+  receiverId: string;
+  repliedLetter: string | null;
+  replyReceivedAt: string | null;
+  replySendedAt: string | null;
+  sendedAt: string;
+  senderId: string;
+  senderName: string;
+};
+
+export type ItemDetail = {
+  id: string;
+  name: string;
+  type: string;
+  photo: string;
+  price: number;
+  description: string;
+};
+
 const HistoryItem = () => {
   const { id } = useParams<{ id: string }>();
   const [sent, setSent] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
-  console.log(id);
+  const [giftDetail, setGiftDetail] = useState<GiftDetail>();
+  const [itemDetail, setItemDetail] = useState<ItemDetail>();
+  console.log(itemDetail);
+  const axios = useAxios();
+
+  const getItemDetail = async (itemId: string) => {
+    await axios({
+      url: `/item/${itemId}`,
+      method: "get",
+      onSuccess: (res) => {
+        setItemDetail(res);
+      },
+    });
+  };
+
+  const sendMessage = async () => {
+    await axios({
+      url: `/gift/reply`,
+      method: "post",
+      data: {
+        giftId: id,
+        repliedLetter: message,
+      },
+      onSuccess: () => {
+        setSent(true);
+        alert("답장을 보냈습니다");
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (!id) return;
+    axios({
+      url: `/gift/${id}`,
+      method: "get",
+      onSuccess: (res) => {
+        setGiftDetail(res);
+        getItemDetail(res.itemId);
+      },
+    });
+  }, [id]);
 
   return (
     <HistoryItemContent>
       <Title>
-        <H>대전에 사는 용가리</H>님이
+        <H>{giftDetail?.senderName}</H>님이
         <br />
         <H>마음을 담은 선물</H>을 보냈어요
       </Title>
       <ProductInfo
-        price={1000}
-        image="grape_jelly"
-        title="사과"
-        description="용가리"
+        price={itemDetail?.price || 0}
+        image={itemDetail?.photo || ""}
+        title={itemDetail?.name || ""}
+        description={itemDetail?.description || ""}
       />
       <TextInput
         placeholder=""
-        value="오늘 하루 함내세요!"
+        value={giftDetail?.letter || ""}
         type="default"
         multiline
         disabled
       />
       <Divider />
       <Title>
-        <H>대전에 사는 용가리</H>님에게
+        <H>{giftDetail?.senderName}</H>님에게
         <br />
         <H>답장</H>을 보내보세요
       </Title>
@@ -74,7 +139,7 @@ const HistoryItem = () => {
       />
       {!sent && (
         <Button
-          onClick={() => setSent(true)}
+          onClick={() => sendMessage()}
           text="답장 보내기"
           disabled={message === ""}
         />

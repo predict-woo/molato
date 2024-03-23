@@ -59,6 +59,10 @@ const Login = () => {
         name: id,
         password,
       },
+      onSuccess: () => {
+        console.log("로그인 성공");
+        navigte("/");
+      },
     });
   };
 
@@ -80,8 +84,8 @@ const Login = () => {
         />
         <Button text="로그인" onClick={() => handleLogin()} />
         <SignInText>
-          계정이 없으신가요?{" "}
-          <UH onClick={() => navigte("/signin")}>회원가입하기</UH>
+          계정이 없으신가요?
+          <UH onClick={() => navigte("/signin")}> 회원가입하기</UH>
         </SignInText>
       </InputStyled>
     </LoginContent>
