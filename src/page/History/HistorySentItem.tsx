@@ -27,7 +27,7 @@ const Title = styled.div`
 
 const Divider = styled.div`
   border-radius: 10px;
-  background: var(--gray-light, #eee);
+  background: var(--gray-light, #ddd);
   height: 1px;
   align-self: stretch;
 `;

@@ -109,7 +109,9 @@ const ProductHistory = ({ gift, onClick }: Props) => {
           <ProductTitle>{product.name}</ProductTitle>
           <ProductDate>{extractKoreanDate(gift.date)}</ProductDate>
         </div>
-        <ProductFrom>{gift.senderName}</ProductFrom>
+        <ProductFrom>
+          {gift.senderName !== undefined ? gift.senderName : gift.fromName}
+        </ProductFrom>
       </ProductTextOuter>
     </ProductInfoInner>
   );

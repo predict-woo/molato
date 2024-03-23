@@ -26,6 +26,7 @@ export interface Gift {
   senderId: string;
   sender: User;
   senderName: string;
+  fromName: string;
   receiverId: string;
   receiver: User;
   receiverName: string;
