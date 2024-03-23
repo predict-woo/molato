@@ -81,7 +81,7 @@ const Login = () => {
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword((e.target as HTMLInputElement).value)}
-          type="default"
+          type="password"
         />
         <Button text="로그인" onClick={() => handleLogin()} />
         <SignInText>
