@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "page/Home";
 import styled from "styled-components";
 import Present from "page/Present";
+import BottomNavigation from "component/BottomNavigationBar.tsx";
 
 const AppInner = styled.div`
   display: flex;
@@ -35,6 +36,7 @@ function App() {
           </Route>
         </Routes>
       </AppContent>
+      <BottomNavigation />
     </AppInner>
   );
 }
