@@ -9,3 +9,8 @@ export const priceRange = (price: number) => {
     return "error";
   }
 };
+
+export const getImageUrl = (price: number, image: string) => {
+  const convertedPrice = priceRange(price);
+  return `/item/${convertedPrice}/${image}.png`;
+};

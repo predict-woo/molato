@@ -4,13 +4,13 @@ import { getImageUrl } from "utils";
 type Props = {
   price: number;
   image: string;
-  title: string;
-  description: string;
+  item: string;
+  from: string;
 };
 
 const ProductInfoInner = styled.div`
   display: flex;
-  padding: 16px;
+  padding: 12px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -21,8 +21,8 @@ const ProductInfoInner = styled.div`
 `;
 
 const ProductImage = styled.img`
-  width: 120px;
-  height: 120px;
+  width: 60px;
+  height: 60px;
   border: 1px solid var(--gray-light, #eee);
   border-radius: 16px;
 `;
@@ -31,8 +31,8 @@ const ProductTextOuter = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 16px 8px;
+  gap: 4px;
+  padding: 8px;
 `;
 
 const ProductTitle = styled.div`
@@ -45,7 +45,7 @@ const ProductTitle = styled.div`
   line-height: normal;
 `;
 
-const ProductDescription = styled.div`
+const ProductFrom = styled.div`
   color: var(--black, #333);
   font-family: Pretendard;
   font-size: 14px;
@@ -54,14 +54,16 @@ const ProductDescription = styled.div`
   line-height: 20px;
 `;
 
-const ProductInfo = ({ price, image, title, description }: Props) => (
-  <ProductInfoInner>
-    <ProductImage src={getImageUrl(price, image)}></ProductImage>
-    <ProductTextOuter>
-      <ProductTitle>{title}</ProductTitle>
-      <ProductDescription>{description}</ProductDescription>
-    </ProductTextOuter>
-  </ProductInfoInner>
-);
+const ProductHistory = ({ price, image, item, from }: Props) => {
+  return (
+    <ProductInfoInner>
+      <ProductImage src={getImageUrl(price, image)}></ProductImage>
+      <ProductTextOuter>
+        <ProductTitle>{item}</ProductTitle>
+        <ProductFrom>{from}</ProductFrom>
+      </ProductTextOuter>
+    </ProductInfoInner>
+  );
+};
 
-export default ProductInfo;
+export default ProductHistory;

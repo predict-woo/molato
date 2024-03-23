@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { priceRange } from "utils";
+import { getImageUrl } from "utils";
 
 type Props = {
   price: number;
@@ -61,9 +61,7 @@ const ProductPrice = styled.div`
 const ProductCard = ({ price, image, text, selected }: Props) => {
   return (
     <ProductCardInner selected={!!selected}>
-      <ProductImage
-        src={`/item/${priceRange(price)}/${image}.png`}
-      ></ProductImage>
+      <ProductImage src={getImageUrl(price, image)}></ProductImage>
       <ProductTextOuter>
         <ProductTitle>{text}</ProductTitle>
         <ProductPrice>{price}원</ProductPrice>
