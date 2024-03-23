@@ -65,7 +65,7 @@ const HistoryItem = () => {
       </Title>
 
       <TextInput
-        placeholder=""
+        placeholder="마음을 담아 답장을 작성하세요"
         value={message}
         onChange={(e) => setMessage((e.target as HTMLTextAreaElement).value)}
         type="default"

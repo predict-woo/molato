@@ -6,6 +6,7 @@ type Props = {
   image: string;
   item: string;
   from: string;
+  onClick?: () => void;
 };
 
 const ProductInfoInner = styled.div`
@@ -21,6 +22,7 @@ const ProductInfoInner = styled.div`
   box-shadow: -1px 2px 4px 0px rgba(0, 0, 0, 0.25);
   border: 1px solid var(--gray-light, #eee);
   box-sizing: border-box;
+  cursor: pointer;
 `;
 
 const ProductImage = styled.img`
@@ -57,9 +59,9 @@ const ProductFrom = styled.div`
   line-height: 20px;
 `;
 
-const ProductHistory = ({ price, image, item, from }: Props) => {
+const ProductHistory = ({ price, image, item, from, onClick }: Props) => {
   return (
-    <ProductInfoInner>
+    <ProductInfoInner onClick={onClick}>
       <ProductImage src={getImageUrl(price, image)}></ProductImage>
       <ProductTextOuter>
         <ProductTitle>{item}</ProductTitle>

@@ -54,8 +54,7 @@ const StyledInput = styled.input<{ type: "default" | "disabled" | "error" }>`
       : "var(--black, #333)"};
 
   &::placeholder {
-    color: ${(props) =>
-      props.type === "disabled" ? "var(--gray-light, #EEE)" : "inherit"};
+    color: var(--gray-light, #eee);
   }
 `;
 
@@ -77,6 +76,10 @@ const StyledTextarea = styled.textarea<{
     props.type === "disabled" ? "color: var(--gray-light, #EEE);" : "none"};
   resize: none;
   overflow: hidden;
+
+  &::placeholder {
+    color: var(--gray-light, #eee);
+  }
 `;
 
 const TextInputs = {

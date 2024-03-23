@@ -81,6 +81,7 @@ const ProductHistoryList = ({ products, foldable, title }: Props) => {
             image={product.image}
             item={product.item}
             from={product.from}
+            onClick={() => (window.location.href = `/history/${index}`)}
           />
         ))}
       </ProductListInner>
