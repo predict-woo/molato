@@ -62,6 +62,19 @@ const History = () => {
           foldable={false}
         />
       </UncheckedProducts>
+      <UncheckedProducts>
+        <ProductHistoryList
+          title={
+            <ProductListHeader>
+              <H>아직 확인하지 않은 답장</H>이 1개 있어요
+            </ProductListHeader>
+          }
+          products={[
+            { price: 1000, image: "beatles", item: "포도", from: "용가리" },
+          ]}
+          foldable={false}
+        />
+      </UncheckedProducts>
       <ProductHistoryList
         title={
           <ProductListHeader>
