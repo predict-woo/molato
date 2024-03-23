@@ -21,11 +21,6 @@ const SigninContent = styled.div`
   justify-content: center;
 `;
 
-const StyledImage = styled.img`
-  width: 120px;
-  height: 120px;
-`;
-
 const InputStyled = styled.div`
   display: flex;
   flex-direction: column;
