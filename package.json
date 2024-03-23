@@ -26,5 +26,8 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "netlify-cli": "^17.20.1",
     "vite": "^5.2.0"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }
