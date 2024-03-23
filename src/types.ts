@@ -38,6 +38,7 @@ export type GiftDetail = {
   letter: string;
   receivedAt: string;
   receiverId: string;
+  receiverName: string;
   repliedLetter: string | null;
   replyReceivedAt: string | null;
   replySendedAt: string | null;

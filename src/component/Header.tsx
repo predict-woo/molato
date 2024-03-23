@@ -29,11 +29,15 @@ const HeaderNav = styled.div`
 const Header = () => {
   const { pathname } = useLocation();
   const path2Type = (path: string) => {
+    if (path.startsWith("/history/sent")) return "history";
+    if (path.startsWith("/history/received")) return "history";
     switch (path) {
       case "/":
         return "logo";
       case "/info":
         return "info";
+      case "/history":
+        return "logo";
       default:
         return "logo";
     }

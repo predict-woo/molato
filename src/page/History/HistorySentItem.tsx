@@ -28,17 +28,19 @@ const Title = styled.div`
 
 const Divider = styled.div`
   border-radius: 10px;
-  background: var(--gray-light, #ddd);
+  background: var(--gray-light, #eee);
   height: 1px;
   align-self: stretch;
 `;
 
-const HistoryItem = () => {
+const HistorySentItem = () => {
   const { id } = useParams<{ id: string }>();
   const [sent, setSent] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [giftDetail, setGiftDetail] = useState<GiftDetail>();
   const [itemDetail, setItemDetail] = useState<ItemDetail>();
+
+  console.log(giftDetail);
   console.log(itemDetail);
   const axios = useAxios();
 
@@ -82,7 +84,7 @@ const HistoryItem = () => {
   return (
     <HistoryItemContent>
       <Title>
-        <H>{giftDetail?.senderName}</H>님이
+        <H>{giftDetail?.receiverName}</H>님에게
         <br />
         <H>마음을 담은 선물</H>을 보냈어요
       </Title>
@@ -95,29 +97,28 @@ const HistoryItem = () => {
         disabled
       />
       <Divider />
-      <Title>
-        <H>{giftDetail?.senderName}</H>님에게
-        <br />
-        <H>답장</H>을 보내보세요
-      </Title>
+      {giftDetail?.repliedLetter && (
+        <>
+          <Title>
+            <H>{giftDetail?.senderName}</H>님에게
+            <br />
+            <H>답장</H>을 받았어요
+          </Title>
 
-      <TextInput
-        placeholder="마음을 담아 답장을 작성하세요"
-        value={message}
-        onChange={(e) => setMessage((e.target as HTMLTextAreaElement).value)}
-        type="default"
-        multiline
-        disabled={sent}
-      />
-      {!sent && (
-        <Button
-          onClick={() => sendMessage()}
-          text="답장 보내기"
-          disabled={message === ""}
-        />
+          <TextInput
+            placeholder=""
+            value={message}
+            onChange={(e) =>
+              setMessage((e.target as HTMLTextAreaElement).value)
+            }
+            type="default"
+            multiline
+            disabled={true}
+          />
+        </>
       )}
     </HistoryItemContent>
   );
 };
 
-export default HistoryItem;
+export default HistorySentItem;

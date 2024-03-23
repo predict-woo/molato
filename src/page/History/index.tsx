@@ -129,6 +129,7 @@ const History = () => {
           }
           products={newGift || []}
           foldable={false}
+          type="received"
         />
       </UncheckedProducts>
       <UncheckedProducts>
@@ -140,6 +141,7 @@ const History = () => {
           }
           products={newReply || []}
           foldable={false}
+          type="sent"
         />
       </UncheckedProducts>
       <ProductHistoryList
@@ -150,6 +152,7 @@ const History = () => {
         }
         products={recieved || []}
         foldable={true}
+        type="received"
       />
       <ProductHistoryList
         title={
@@ -159,6 +162,7 @@ const History = () => {
         }
         products={sended || []}
         foldable={true}
+        type="sent"
       />
     </HistoryContent>
   );
