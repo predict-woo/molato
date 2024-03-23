@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import present from 'assets/present.svg';
+import present_selected from 'assets/present-selected.svg';
+import molato from 'assets/molato.svg';
+import user from 'assets/user.svg';
+import user_selected from 'assets/user-selected.svg';
 
 const BottomNavigationBar = styled.div`
   position: fixed;
@@ -23,16 +28,16 @@ const BottomNavigation: React.FC = () => {
     <BottomNavigationBar>
       <div>
         <Link to="/present" className="nav-link" onClick={() => setActiveNav('present')}>
-          <img src={activeNav == 'present' ? 'src/assets/present-selected.svg' : 'src/assets/present.svg'}></img>
+          <img src={activeNav == 'present' ? present_selected : present}></img>
         </Link>
       </div>
       <div>
         <Link to="/" className="nav-link" onClick={() => setActiveNav('home')}>
-          <img src='/src/assets/molato.svg'/>
+          <img src={molato}/>
         </Link>
       </div>
       <div>
-        <img src='/src/assets/user.svg' color={activeNav == 'user' ? "#d25251" : "#333333"} />
+        <img src='/src/assets/user.svg' color={activeNav == 'user' ? user_selected : user} />
       </div>
     </BottomNavigationBar>
   );
