@@ -28,7 +28,7 @@ const Home = () => {
   }, [intervalDuration]);
 
   useEffect(() => {
-    if (step >= 14) {
+    if (step >= 16) {
       return;
     }
     window.scrollTo(0, document.body.scrollHeight);
