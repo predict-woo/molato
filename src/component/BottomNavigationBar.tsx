@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 import present from "../assets/present.svg";
@@ -6,6 +6,7 @@ import present_selected from "../assets/present-selected.svg";
 import molato from "../assets/molato.svg";
 import user from "../assets/user.svg";
 import user_selected from "../assets/user-selected.svg";
+import useAxios from '../hook/useAxios';
 
 const BottomNavigationBar = styled.div`
   position: sticky;
@@ -15,12 +16,12 @@ const BottomNavigationBar = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
-  width: 100%; /* max-width를 500px로 설정 */
+  width: 100%; 
   height: 60px;
-  margin: 0 auto; /* 가운데 정렬을 위해 margin을 자동으로 설정 */
+  margin: 0 auto;
   padding: 0px 16px;
-  border-top: 1px solid #e2e2e2; /* 테두리 스타일, 너비 및 색상 지정 */
-  z-index: 1000; /* 화면 위에 표시되도록 높은 숫자로 설정 */
+  border-top: 1px solid #e2e2e2; 
+  z-index: 1000; 
 `;
 
 const IconContainer = styled.div`
@@ -32,42 +33,73 @@ const IconContainer = styled.div`
 `;
 
 const NotificationIcon = styled.div`
-  position: absolute; /* 포지션을 절대적(absolute)으로 설정하여 상위 요소에 상대적으로 위치합니다. */
-  top: 0px; /* 위에서 0px 위치 */
-  right: 0px; /* 오른쪽에서 0px 위치 */
-  width: 18px; /* 원의 지름 */
-  height: 18px; /* 원의 지름 */
-  background-color: #d25151; /* 빨간색 배경 */
-  border-radius: 50%; /* 원 모양 */
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 18px;
+  height: 18px;
+  background-color: #d25151;
+  border-radius: 50%;
   border-style:solid;
   border-color: #ffffff;
   border-width: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white; /* 아이콘 텍스트 색상 */
-  font-size: 12px; /* 아이콘 텍스트 크기 */
-  font-weight: bold; /* 아이콘 텍스트 굵게 */
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
 `;
 
 const BottomNavigation: React.FC = () => {
+  const axiosReq = useAxios();
+
+  const [notiCnt, setNotiCnt] = useState(0);
+
+  const fetchAlarmCnt = async () => {
+    try {
+      const response = await axiosReq({
+        url: 'https://api.molato.fun/user/newCnt',
+        method: 'get',
+        params: {
+          'Cookie': document.cookie
+        },
+      });
+      setNotiCnt(response['total']);
+    } catch (error) {
+      console.log("An error occurred while fetching alarm count:", error);
+      setNotiCnt(0); // 에러 발생 시 알람 개수를 0으로 설정
+    }
+  };
+
+  useEffect(() => {
+    fetchAlarmCnt(); // 최초 실행
+    const intervalId = setInterval(fetchAlarmCnt, 10000); // 10초마다 실행되도록 설정
+    return () => clearInterval(intervalId); // 컴포넌트가 언마운트될 때 interval 해제
+  }, []);
+
   const { pathname } = useLocation();
+
   return (
     <BottomNavigationBar>
       <IconContainer>
         <Link to="/history" className="nav-link">
-          <img src={pathname == "/history" ? present_selected : present}></img>
+          <img src={pathname === "/history" ? present_selected : present} alt="History" />
         </Link>
-        <NotificationIcon>3</NotificationIcon>
+        {notiCnt > 0 && (
+          <NotificationIcon>
+            {notiCnt}
+          </NotificationIcon>
+        )}
       </IconContainer>
       <IconContainer>
         <Link to="/present" className="nav-link">
-          <img src={molato} />
+          <img src={molato} alt="Present" />
         </Link>
       </IconContainer>
       <IconContainer>
         <Link to="/my" className="nav-link">
-          <img src={pathname == "/my" ? user_selected : user} />
+          <img src={pathname === "/my" ? user_selected : user} alt="User" />
         </Link>
       </IconContainer>
     </BottomNavigationBar>
