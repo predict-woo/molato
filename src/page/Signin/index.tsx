@@ -67,7 +67,7 @@ const Signin = () => {
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword((e.target as HTMLInputElement).value)}
-          type="default"
+          type="password"
         />
         <TextInput
           placeholder="비밀번호 재입력"
@@ -75,7 +75,7 @@ const Signin = () => {
           onChange={(e) =>
             setPasswordRepeat((e.target as HTMLInputElement).value)
           }
-          type="default"
+          type="password"
         />
         {password !== passwordRepeat && (
           <SignInText>
