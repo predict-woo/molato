@@ -62,7 +62,11 @@ const Molato = ({ nextStep }: Props) => {
         ))}
       </UserCardList>
 
-      <Button text="선물 고르기" onClick={nextStep} disabled={!selectedUser} />
+      <Button
+        text="선물 고르기"
+        onClick={nextStep}
+        disabled={selectedUser === null}
+      />
     </>
   );
 };
