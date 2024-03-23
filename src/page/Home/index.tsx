@@ -7,7 +7,7 @@ const HighlightedContent = styled.span`
 
 const HomeInner = styled.div`
   flex-grow: 1;
-  height: calc(100vh - 118px);
+  height: calc(100vh - 120px - 48px);
   display: flex;
   flex-direction: column;
   justify-content: center;

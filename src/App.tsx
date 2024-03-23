@@ -1,4 +1,3 @@
-import Header from "component/Header";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "page/Home";
@@ -7,6 +6,8 @@ import Present from "page/Present";
 import History from "page/History";
 import HistoryItem from "page/History/HistoryItem";
 import Login from "page/Login";
+import My from "page/My";
+import Layout from "page/Layout";
 
 const AppInner = styled.div`
   display: flex;
@@ -29,11 +30,12 @@ function App() {
     <AppInner>
       <AppContent>
         <Routes>
-          <Route path="/" element={<Header />}>
+          <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/present" element={<Present />} />
             <Route path="/history/:id" element={<HistoryItem />} />
             <Route path="/history" element={<History />} />
+            <Route path="/my" element={<My />} />
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
