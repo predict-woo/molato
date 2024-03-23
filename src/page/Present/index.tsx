@@ -51,7 +51,7 @@ const Present = () => {
         receiverId: selectedUser!.id,
       },
       onSuccess: (data) => {
-        navigate(`/history/${data.id}`);
+        navigate(`/history/sent/${data.id}`);
       },
     });
   };
