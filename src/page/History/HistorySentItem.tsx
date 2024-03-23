@@ -37,8 +37,6 @@ const HistorySentItem = () => {
   const [giftDetail, setGiftDetail] = useState<GiftDetail>();
   const [itemDetail, setItemDetail] = useState<ItemDetail>();
 
-  console.log(giftDetail);
-  console.log(itemDetail);
   const axios = useAxios();
 
   const getItemDetail = async (itemId: string) => {

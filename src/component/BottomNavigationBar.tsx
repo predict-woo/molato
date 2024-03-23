@@ -67,7 +67,6 @@ const BottomNavigation: React.FC = () => {
       });
       setNotiCnt(response["total"]);
     } catch (error) {
-      console.log("An error occurred while fetching alarm count:", error);
       setNotiCnt(0); // 에러 발생 시 알람 개수를 0으로 설정
     }
   };

@@ -44,7 +44,6 @@ const Molato = ({ nextStep, selectedUser, select }: Props) => {
       method: "get",
     });
     setUserList(res);
-    console.log(res);
   };
 
   useEffect(() => {

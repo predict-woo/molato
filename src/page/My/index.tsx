@@ -22,10 +22,9 @@ const My = () => {
       method: "get",
     });
     setCurrentUser(res);
-    console.log(res);
   };
   const setUser = async (user: User) => {
-    const res = await axios({
+    await axios({
       url: "/user",
       method: "post",
       data: {
@@ -34,11 +33,9 @@ const My = () => {
         introduction: user!.introduction,
       },
       onSuccess: (data) => {
-        console.log("data", data);
         setCurrentUser(data);
       },
     });
-    console.log(res);
   };
 
   useEffect(() => {
