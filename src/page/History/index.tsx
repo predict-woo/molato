@@ -54,6 +54,9 @@ export type HistoryItem = {
 const History = () => {
   const axios = useAxios();
   const [newGift, setNewGift] = useState<HistoryItem[]>();
+  const [newReply, setNewReply] = useState<HistoryItem[]>();
+  const [recieved, setRecieved] = useState<HistoryItem[]>();
+  const [send, setSend] = useState<HistoryItem[]>();
 
   const getNewGift = async () => {
     await axios({
@@ -65,10 +68,46 @@ const History = () => {
     });
   };
 
-  console.log(newGift);
+  const getNewReply = async () => {
+    await axios({
+      url: "/user/newReply",
+      method: "get",
+      onSuccess: (data) => {
+        setNewReply(data);
+      },
+    });
+  };
+
+  const getRecieved = async () => {
+    await axios({
+      url: "gift/received",
+      method: "get",
+      onSuccess: (data) => {
+        setRecieved(data);
+      },
+    });
+  };
+
+  const getSend = async () => {
+    await axios({
+      url: "gift/received",
+      method: "get",
+      onSuccess: (data) => {
+        setSend(data);
+      },
+    });
+  };
+
+  console.log("newGift", newGift);
+  console.log("newReply", newReply);
+  console.log("recieved", recieved);
+  console.log("send", send);
 
   useEffect(() => {
     getNewGift();
+    getNewReply();
+    getRecieved();
+    getSend();
   }, []);
 
   return (
@@ -96,15 +135,7 @@ const History = () => {
               <H>아직 확인하지 않은 답장</H>이 1개 있어요
             </ProductListHeader>
           }
-          products={[
-            {
-              price: 1000,
-              image: "beatles",
-              item: "포도",
-              date: "2024.03.23",
-              from: "용가리",
-            },
-          ]}
+          products={newReply || []}
           foldable={false}
         />
       </UncheckedProducts>
@@ -114,22 +145,7 @@ const History = () => {
             <H>받은 선물</H> 목록 (16개)
           </ProductListHeader>
         }
-        products={[
-          {
-            price: 1000,
-            image: "beatles",
-            item: "포도",
-            date: "2024.03.23",
-            from: "용가리",
-          },
-          {
-            price: 1000,
-            image: "grape_jelly",
-            item: "사과",
-            date: "2024.03.23",
-            from: "용가리",
-          },
-        ]}
+        products={recieved || []}
         foldable={true}
       />
       <ProductHistoryList
@@ -138,22 +154,7 @@ const History = () => {
             <H>준 선물</H> 목록 (14개)
           </ProductListHeader>
         }
-        products={[
-          {
-            price: 1000,
-            image: "beatles",
-            item: "포도",
-            date: "2024.03.23",
-            from: "용가리",
-          },
-          {
-            price: 1000,
-            image: "grape_jelly",
-            item: "사과",
-            date: "2024.03.23",
-            from: "용가리",
-          },
-        ]}
+        products={send || []}
         foldable={true}
       />
     </HistoryContent>
