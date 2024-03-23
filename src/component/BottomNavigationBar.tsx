@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
-import present from '../assets/present.svg';
-import present_selected from '../assets/present-selected.svg';
-import molato from '../assets/molato.svg';
-import user from '../assets/user.svg';
-import user_selected from '../assets/user-selected.svg';
+import present from "../assets/present.svg";
+import present_selected from "../assets/present-selected.svg";
+import molato from "../assets/molato.svg";
+import user from "../assets/user.svg";
+import user_selected from "../assets/user-selected.svg";
 
 const BottomNavigationBar = styled.div`
   position: fixed;
@@ -23,23 +23,32 @@ const BottomNavigationBar = styled.div`
   z-index: 1000; /* 화면 위에 표시되도록 높은 숫자로 설정 */
 `;
 
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const BottomNavigation: React.FC = () => {
-  const [activeNav, setActiveNav] = useState('molato');
+  const [activeNav, setActiveNav] = useState("molato");
   return (
     <BottomNavigationBar>
-      <div>
-        <Link to="/history" className="nav-link" onClick={() => setActiveNav('history')}>
-          <img src={activeNav == 'history' ? present_selected : present}></img>
+      <IconContainer>
+        <Link
+          to="/history"
+          className="nav-link"
+          onClick={() => setActiveNav("history")}
+        >
+          <img src={activeNav == "history" ? present_selected : present}></img>
         </Link>
-      </div>
-      <div>
-        <Link to="/" className="nav-link" onClick={() => setActiveNav('home')}>
-          <img src={molato}/>
+      </IconContainer>
+      <IconContainer>
+        <Link to="/" className="nav-link" onClick={() => setActiveNav("home")}>
+          <img src={molato} />
         </Link>
-      </div>
-      <div>
-        <img src={activeNav == 'user' ? user_selected : user} />
-      </div>
+      </IconContainer>
+      <IconContainer>
+        <img src={activeNav == "user" ? user_selected : user} />
+      </IconContainer>
     </BottomNavigationBar>
   );
 };
