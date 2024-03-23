@@ -30,7 +30,6 @@ const HeaderNav = styled.div`
 const TotalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
   height: 100%;
   min-height: 100vh;
 `;
