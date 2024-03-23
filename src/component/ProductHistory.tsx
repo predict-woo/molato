@@ -81,6 +81,22 @@ const ProductHistory = ({ gift, onClick }: Props) => {
     console.log(res);
   };
 
+  function extractKoreanDate(dateTimeString: string) {
+    // Date 객체 생성 (UTC 시간으로부터)
+    const date = new Date(dateTimeString);
+
+    // 한국 시간대로 변경
+    date.setHours(date.getHours() + 9); // UTC 시간대에서 한국 시간대로 변환 (9시간 추가)
+
+    // 날짜 형식 변환 (년-월-일)
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    // 한국 시간대로 변환된 날짜 정보 반환
+    return `${year}-${month}-${day}`;
+}
+
   useEffect(() => {
     getProductFromGift();
   }, []);
@@ -92,7 +108,7 @@ const ProductHistory = ({ gift, onClick }: Props) => {
       <ProductTextOuter>
         <div style={{ display: "flex" }}>
           <ProductTitle>{product.name}</ProductTitle>
-          <ProductDate>{gift.sendedAt}</ProductDate>
+          <ProductDate>{extractKoreanDate(gift.date)}</ProductDate>
         </div>
         <ProductFrom>{gift.senderName}</ProductFrom>
       </ProductTextOuter>
