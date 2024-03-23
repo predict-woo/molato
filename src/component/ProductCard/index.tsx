@@ -26,6 +26,8 @@ const ProductCardInner = styled.div<{ selected: boolean }>`
 const ProductImage = styled.img`
   flex: 1 0 0;
   align-self: stretch;
+  border: 1px solid var(--gray-light, #eee);
+  border-radius: 16px;
 `;
 
 const ProductTextOuter = styled.div`
@@ -67,9 +69,12 @@ const ProductCard = ({ price, image, text, selected }: Props) => {
       return "error";
     }
   };
+  console.log(`/item/${priceRange(price)}/${image}.png`);
   return (
     <ProductCardInner selected={!!selected}>
-      <ProductImage src={`/${priceRange(price)}/${image}.png`}></ProductImage>
+      <ProductImage
+        src={`/item/${priceRange(price)}/${image}.png`}
+      ></ProductImage>
       <ProductTextOuter>
         <ProductTitle>{text}</ProductTitle>
         <ProductPrice>{price}원</ProductPrice>
