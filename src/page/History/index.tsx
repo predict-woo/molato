@@ -112,30 +112,34 @@ const History = () => {
         </H>
         을 주고 받은 기록이에요
       </Title>
-      <UncheckedProducts>
-        <ProductHistoryList
-          title={
-            <ProductListHeader>
-              <H>아직 확인하지 않은 선물</H>이 {newGift?.length}개 있어요
-            </ProductListHeader>
-          }
-          products={newGift || []}
-          foldable={false}
-          type="received"
-        />
-      </UncheckedProducts>
-      <UncheckedProducts>
-        <ProductHistoryList
-          title={
-            <ProductListHeader>
-              <H>아직 확인하지 않은 답장</H>이 {newReply?.length}개 있어요
-            </ProductListHeader>
-          }
-          products={newReply || []}
-          foldable={false}
-          type="sent"
-        />
-      </UncheckedProducts>
+      {newGift && newGift.length !== 0 && (
+        <UncheckedProducts>
+          <ProductHistoryList
+            title={
+              <ProductListHeader>
+                <H>아직 확인하지 않은 선물</H>이 {newGift.length}개 있어요
+              </ProductListHeader>
+            }
+            products={newGift || []}
+            foldable={false}
+            type="received"
+          />
+        </UncheckedProducts>
+      )}
+      {newReply && newReply.length !== 0 && (
+        <UncheckedProducts>
+          <ProductHistoryList
+            title={
+              <ProductListHeader>
+                <H>아직 확인하지 않은 답장</H>이 {newReply.length}개 있어요
+              </ProductListHeader>
+            }
+            products={newReply || []}
+            foldable={false}
+            type="sent"
+          />
+        </UncheckedProducts>
+      )}
       <ProductHistoryList
         title={
           <ProductListHeader>
