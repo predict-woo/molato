@@ -1,13 +1,12 @@
-import Header from "component/Header";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "page/Home";
 import styled from "styled-components";
 import Present from "page/Present";
-import BottomNavigation from "component/BottomNavigationBar.tsx";
 import History from "page/History";
 import HistoryItem from "page/History/HistoryItem";
 import My from "page/My";
+import Layout from "page/Layout";
 
 const AppInner = styled.div`
   display: flex;
@@ -30,7 +29,7 @@ function App() {
     <AppInner>
       <AppContent>
         <Routes>
-          <Route path="/" element={<Header />}>
+          <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/present" element={<Present />} />
             <Route path="/history/:id" element={<HistoryItem />} />
@@ -39,7 +38,6 @@ function App() {
           </Route>
         </Routes>
       </AppContent>
-      <BottomNavigation />
     </AppInner>
   );
 }

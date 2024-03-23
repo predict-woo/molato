@@ -13,7 +13,6 @@ const HeaderInner = styled.div`
   padding: 0px 16px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   flex-shrink: 0;
   flex-grow: 0;
   box-sizing: border-box;
@@ -25,19 +24,6 @@ const HeaderNav = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
-`;
-
-const TotalContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 100vh;
-`;
-
-const RouteContainer = styled.div`
-  padding: 24px;
-  flex-grow: 1;
-  box-sizing: border-box;
 `;
 
 const Header = () => {
@@ -54,30 +40,25 @@ const Header = () => {
   };
 
   return (
-    <TotalContainer>
-      <HeaderInner>
-        {path2Type(pathname) === "logo" ? (
+    <HeaderInner>
+      {path2Type(pathname) === "logo" ? (
+        <img
+          src={logo}
+          alt="logo"
+          onClick={() => (window.location.href = "/")}
+          style={{ cursor: "pointer" }}
+        />
+      ) : (
+        <HeaderNav>
           <img
-            src={logo}
-            alt="logo"
+            src={chevronLeft}
+            alt="back"
             onClick={() => (window.location.href = "/")}
             style={{ cursor: "pointer" }}
           />
-        ) : (
-          <HeaderNav>
-            <img
-              src={chevronLeft}
-              alt="back"
-              onClick={() => (window.location.href = "/")}
-              style={{ cursor: "pointer" }}
-            />
-          </HeaderNav>
-        )}
-      </HeaderInner>
-      <RouteContainer>
-        <Outlet />
-      </RouteContainer>
-    </TotalContainer>
+        </HeaderNav>
+      )}
+    </HeaderInner>
   );
 };
 
