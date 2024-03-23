@@ -61,7 +61,7 @@ const My = () => {
       data: {},
       onSuccess: () => {
         console.log("로그아웃");
-        navigate("/signin");
+        navigate("/login");
       },
     });
   };

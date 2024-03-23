@@ -17,21 +17,27 @@ const HomeInner = styled.div`
 
 const Home = () => {
   const [step, setStep] = useState(0);
-  // increase step by 1 every 1 seconds then 3 seconds, so 1, 3, 1, 3, 1, 3, ...
-  const [intervalDuration, setIntervalDuration] = useState(3000); // Start with 1 second
+  const [intervalDuration, setIntervalDuration] = useState(1000);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Increase step by 1
       setStep((prevStep) => prevStep + 1);
-      // Alternate interval duration between 1 second and 3 seconds
       setIntervalDuration((prevDuration) =>
-        prevDuration === 3000 ? 1000 : 3000
+        prevDuration === 1000 ? 500 : 1000
       );
+      // scroll down to bottom
     }, intervalDuration);
 
     return () => clearInterval(interval);
   }, [intervalDuration]);
+
+  useEffect(() => {
+    if (step >= 14) {
+      return;
+    }
+    window.scrollTo(0, document.body.scrollHeight);
+  }, [step]);
+
   return (
     <HomeInner>
       {step >= 0 && (
@@ -66,6 +72,40 @@ const Home = () => {
           그럼 <H>예상치 못하는 순간</H>에
           <br />
           <H>사랑스러운 선물</H>을 받겠구나!{" "}
+        </TextBubble>
+      )}
+
+      {step >= 8 && (
+        <TextBubble waiting={step >= 8 && step <= 9} direction="right">
+          맞아또!
+          <br />
+          <H>받는 걸 넘어서</H> 그 기쁨을 다시
+          <br />
+          <H>다른 사람들과 나눌</H> 수도 있겠또?
+        </TextBubble>
+      )}
+
+      {step >= 10 && (
+        <TextBubble waiting={step >= 10 && step <= 11} direction="left">
+          완전 기대되또!
+          <br />
+          <H>서로를 위해,</H>
+          <br />
+          <H>우리가 만들어 나가는 선물 문화</H>
+          <br />
+          짱이구만또
+        </TextBubble>
+      )}
+
+      {step >= 12 && (
+        <TextBubble waiting={step >= 12 && step <= 13} direction="right">
+          아주 좋아또!
+          <br />
+          <H>두근두근 설렘 넘치는 세상</H>을
+          <br />
+          만들어 나가는 마니또
+          <br />
+          <H>다 같이 시작</H>해볼까또?
         </TextBubble>
       )}
     </HomeInner>

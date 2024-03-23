@@ -26,11 +26,8 @@ const useAxios = () => {
         const res = await axios({ url, method, data, params });
 
         if (res?.status === 403 && res.data?.error === "not logged in") {
-          // navigate(
-          //   `/logout?redirect=${encodeURIComponent(
-          //     `/login?redirect=${encodeURIComponent(currentPath)}`
-          //   )}`
-          // );
+          console.log("not logged in");
+          navigate("/login");
         } else if (res.status !== 200 && res.status !== 201) {
           throw new Error("Status is not 200!");
         } else {
@@ -41,17 +38,15 @@ const useAxios = () => {
         if (
           _axios.isAxiosError(e) &&
           e?.response &&
-          e?.response?.status === 403 &&
+          e?.response?.status === 401 &&
           e?.response?.data?.error === "not logged in"
         ) {
-          // navigate(
-          //   `/logout?redirect=${encodeURIComponent(
-          //     `/login?redirect=${encodeURIComponent(currentPath)}`
-          //   )}`
-          // );
+          navigate("/login");
         } else if (onError) {
+          navigate("/login");
           onError(e);
         } else {
+          navigate("/login");
           console.error(e);
         }
       }
