@@ -1,12 +1,11 @@
 import styled from "styled-components";
+import { User } from "types";
 
-type Props = {
-  profile: string;
-  name: string;
-  description: string;
+interface Props {
+  user: User;
   selected?: boolean;
   onClick?: () => void;
-};
+}
 
 const UserCardInner = styled.div<{ selected: boolean }>`
   flex: 1;
@@ -60,7 +59,7 @@ const TextName = styled.div`
   line-height: normal;
 `;
 
-const TextDescription = styled.div`
+const TextIntroduction = styled.div`
   align-self: stretch;
   color: var(--black, #333);
   font-family: Pretendard;
@@ -70,15 +69,22 @@ const TextDescription = styled.div`
   line-height: normal;
 `;
 
-const UserCard = ({ profile, name, description, selected, onClick }: Props) => {
+const UserCard = ({ user, selected, onClick }: Props) => {
   return (
     <UserCardInner selected={!!selected} onClick={onClick}>
       <ImageOuter>
-        <StyledImage src={profile} alt="profile" />
+        <StyledImage
+          src={
+            user.profilePhoto === ""
+              ? "/profile/default.svg"
+              : user.profilePhoto
+          }
+          alt="profile"
+        />
       </ImageOuter>
       <TextOuter>
-        <TextName>{name}</TextName>
-        <TextDescription>{description}</TextDescription>
+        <TextName>{user.name}</TextName>
+        <TextIntroduction>{user.introduction}</TextIntroduction>
       </TextOuter>
     </UserCardInner>
   );

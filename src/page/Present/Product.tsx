@@ -6,54 +6,16 @@ import {
 } from "./atoms/MainText";
 import styled from "styled-components";
 import ProductCard from "component/ProductCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAxios from "hook/useAxios";
+import { Product, User } from "types";
 
 type Props = {
   nextStep: () => void;
+  selectedUser: User;
+  selectedProduct: Product | null;
+  select: (product: Product) => void;
 };
-
-const productList = [
-  {
-    price: 500,
-    image: "chuppacups",
-    text: "추파춥스",
-  },
-  {
-    price: 500,
-    image: "chuppacups",
-    text: "추파춥스",
-  },
-  {
-    price: 500,
-    image: "chuppacups",
-    text: "추파춥스",
-  },
-  {
-    price: 500,
-    image: "chuppacups",
-    text: "추파춥스",
-  },
-  {
-    price: 500,
-    image: "chuppacups",
-    text: "추파춥스",
-  },
-  {
-    price: 500,
-    image: "chuppacups",
-    text: "추파춥스",
-  },
-  {
-    price: 500,
-    image: "chuppacups",
-    text: "추파춥스",
-  },
-  {
-    price: 500,
-    image: "chuppacups",
-    text: "추파춥스",
-  },
-];
 
 const ProductCardList = styled.div`
   display: grid;
@@ -61,13 +23,32 @@ const ProductCardList = styled.div`
   gap: 12px;
 `;
 
-const Product = ({ nextStep }: Props) => {
-  const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
+const Product = ({
+  nextStep,
+  selectedUser,
+  selectedProduct,
+  select,
+}: Props) => {
+  const axios = useAxios();
+  const [productList, setProductList] = useState<Product[]>([]);
+
+  const getProductList = async () => {
+    const res = await axios({
+      url: "/item",
+      method: "get",
+    });
+    setProductList(res);
+    console.log(res);
+  };
+
+  useEffect(() => {
+    getProductList();
+  }, []);
 
   return (
     <>
       <MainTextWrapper>
-        <HighlightedMainText>몰라또</HighlightedMainText>
+        <HighlightedMainText>{selectedUser.name}</HighlightedMainText>
         <MainText>에게</MainText>
         <br />
         <HighlightedMainText>주고 싶은 선물</HighlightedMainText>
@@ -75,16 +56,17 @@ const Product = ({ nextStep }: Props) => {
       </MainTextWrapper>
 
       <ProductCardList>
-        {productList.map((product, index) => (
-          <ProductCard
-            key={index}
-            price={product.price}
-            image={product.image}
-            text={product.text}
-            selected={selectedProduct === index}
-            onClick={() => setSelectedProduct(index)}
-          />
-        ))}
+        {productList &&
+          productList.map((product, index) => (
+            <ProductCard
+              key={index}
+              product={product}
+              selected={
+                selectedProduct ? selectedProduct.id === product.id : false
+              }
+              onClick={() => select(product)}
+            />
+          ))}
       </ProductCardList>
 
       <Button

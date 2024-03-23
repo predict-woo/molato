@@ -6,10 +6,14 @@ import {
 } from "./atoms/MainText";
 import styled from "styled-components";
 import UserCard from "component/UserCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAxios from "hook/useAxios";
+import { User } from "types";
 
 type Props = {
   nextStep: () => void;
+  selectedUser: User | null;
+  select: (user: User) => void;
 };
 
 const UserCardList = styled.div`
@@ -18,26 +22,22 @@ const UserCardList = styled.div`
   gap: 12px;
 `;
 
-const userList = [
-  {
-    profile: "/profile/default.svg",
-    name: "익명의 몰라또",
-    description: "저에게 선물을 주세또",
-  },
-  {
-    profile: "/profile/default.svg",
-    name: "대전의 용가리",
-    description: "저에게 소소한 행복을 선물해주세요",
-  },
-  {
-    profile: "/profile/default.svg",
-    name: "제욱볶음",
-    description: "어머나 너가 나한테 선물을 준지 몰라또",
-  },
-];
+const Molato = ({ nextStep, selectedUser, select }: Props) => {
+  const axios = useAxios();
+  const [userList, setUserList] = useState<User[]>([]);
 
-const Molato = ({ nextStep }: Props) => {
-  const [selectedUser, setSelectedUser] = useState<number | null>(null);
+  const getUserList = async () => {
+    const res = await axios({
+      url: "/user/list",
+      method: "get",
+    });
+    setUserList(res);
+    console.log(res);
+  };
+
+  useEffect(() => {
+    getUserList();
+  }, []);
 
   return (
     <>
@@ -50,16 +50,15 @@ const Molato = ({ nextStep }: Props) => {
       </MainTextWrapper>
 
       <UserCardList>
-        {userList.map((user, index) => (
-          <UserCard
-            key={index}
-            profile={user.profile}
-            name={user.name}
-            description={user.description}
-            selected={selectedUser === index}
-            onClick={() => setSelectedUser(index)}
-          />
-        ))}
+        {userList &&
+          userList.map((user, index) => (
+            <UserCard
+              key={index}
+              user={user}
+              selected={selectedUser ? selectedUser.id === user.id : false}
+              onClick={() => select(user)}
+            />
+          ))}
       </UserCardList>
 
       <Button
