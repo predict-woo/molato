@@ -5,6 +5,7 @@ import Button from "component/Button";
 import { User } from "types";
 import useAxios from "hook/useAxios";
 import { useNavigate } from "react-router-dom";
+import useModal from "hook/useModal";
 
 const MyInner = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ const MyInner = styled.div`
 
 const My = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const { setAlert } = useModal();
 
   const axios = useAxios();
   const getUser = async () => {
@@ -60,8 +62,16 @@ const My = () => {
       method: "post",
       data: {},
       onSuccess: () => {
-        console.log("로그아웃");
-        navigate("/login");
+        setAlert(
+          "회원가입 성공",
+          "회원가입이 완료되었습니다",
+          () => {
+            navigate("/login");
+          },
+          () => {
+            navigate("/login");
+          }
+        );
       },
     });
   };

@@ -6,6 +6,7 @@ import { H } from "component/H";
 import { useNavigate } from "react-router-dom";
 import useAxios from "hook/useAxios";
 import LottieLogo from "component/LottieLogo";
+import useModal from "hook/useModal";
 
 const LoginContent = styled.div`
   padding: 24px;
@@ -51,6 +52,7 @@ const Login = () => {
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
   const axios = useAxios();
+  const { setAlert } = useModal();
 
   const handleLogin = async () => {
     await axios({
@@ -62,6 +64,9 @@ const Login = () => {
       },
       onSuccess: () => {
         navigate("/");
+      },
+      onError: () => {
+        setAlert("회원가입 실패", "비밀번호나 아이디가 틀렸습니다");
       },
     });
   };
