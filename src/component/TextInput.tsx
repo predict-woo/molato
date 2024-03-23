@@ -12,7 +12,10 @@ type Props = {
 
 const TextInputInner = styled.div`
   display: flex;
+<<<<<<< HEAD
   width: 100%;
+=======
+>>>>>>> f5dbf6d5bfafeedb8323f4850c6746405acfdf2c
   padding: 16px 20px;
   justify-content: center;
   align-items: center;
@@ -49,7 +52,13 @@ const StyledInput = styled.input<{ type: "default" | "disabled" | "error" }>`
   line-height: 20px;
   outline: none;
   color: ${(props) =>
-    props.type === "disabled" ? "color: var(--gray-light, #EEE);" : "none"};
+    props.type === "disabled"
+      ? "var(--gray-light, #EEE)"
+      : "var(--black, #333)"};
+
+  &::placeholder {
+    color: var(--gray-light, #eee);
+  }
 `;
 
 const StyledTextarea = styled.textarea<{
