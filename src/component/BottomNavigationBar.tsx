@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import present from 'assets/present.svg';
-import present_selected from 'assets/present-selected.svg';
-import molato from 'assets/molato.svg';
-import user from 'assets/user.svg';
-import user_selected from 'assets/user-selected.svg';
+import present from '../assets/present.svg';
+import present_selected from '../assets/present-selected.svg';
+import molato from '../assets/molato.svg';
+import user from '../assets/user.svg';
+import user_selected from '../assets/user-selected.svg';
 
 const BottomNavigationBar = styled.div`
   position: fixed;
