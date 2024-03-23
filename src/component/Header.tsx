@@ -16,6 +16,7 @@ const HeaderInner = styled.div`
   flex-shrink: 0;
   flex-grow: 0;
   box-sizing: border-box;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   background-color: transparent;
 `;
