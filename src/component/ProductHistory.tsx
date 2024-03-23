@@ -5,6 +5,7 @@ type Props = {
   price: number;
   image: string;
   item: string;
+  date: string;
   from: string;
   onClick?: () => void;
 };
@@ -41,13 +42,23 @@ const ProductTextOuter = styled.div`
 `;
 
 const ProductTitle = styled.div`
+  flex: 1;
   align-self: stretch;
   color: var(--black, #333);
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
+  line-height: 20px;
+`;
+
+const ProductDate = styled.div`
+  color: var(--black, #333);
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
 `;
 
 const ProductFrom = styled.div`
@@ -59,12 +70,15 @@ const ProductFrom = styled.div`
   line-height: 20px;
 `;
 
-const ProductHistory = ({ price, image, item, from, onClick }: Props) => {
+const ProductHistory = ({ price, image, item, date, from, onClick }: Props) => {
   return (
     <ProductInfoInner onClick={onClick}>
       <ProductImage src={getImageUrl(price, image)}></ProductImage>
       <ProductTextOuter>
-        <ProductTitle>{item}</ProductTitle>
+        <div style={{ display: "flex" }}>
+          <ProductTitle>{item}</ProductTitle>
+          <ProductDate>{date}</ProductDate>
+        </div>
         <ProductFrom>{from}</ProductFrom>
       </ProductTextOuter>
     </ProductInfoInner>

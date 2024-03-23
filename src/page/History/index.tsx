@@ -56,8 +56,20 @@ const History = () => {
             </ProductListHeader>
           }
           products={[
-            { price: 1000, image: "beatles", item: "포도", from: "용가리" },
-            { price: 1000, image: "grape_jelly", item: "사과", from: "용가리" },
+            {
+              price: 1000,
+              image: "beatles",
+              item: "포도",
+              date: "2024.03.23",
+              from: "용가리",
+            },
+            {
+              price: 1000,
+              image: "grape_jelly",
+              item: "사과",
+              date: "2024.03.23",
+              from: "용가리",
+            },
           ]}
           foldable={false}
         />
@@ -70,7 +82,13 @@ const History = () => {
             </ProductListHeader>
           }
           products={[
-            { price: 1000, image: "beatles", item: "포도", from: "용가리" },
+            {
+              price: 1000,
+              image: "beatles",
+              item: "포도",
+              date: "2024.03.23",
+              from: "용가리",
+            },
           ]}
           foldable={false}
         />
@@ -82,8 +100,20 @@ const History = () => {
           </ProductListHeader>
         }
         products={[
-          { price: 1000, image: "beatles", item: "포도", from: "용가리" },
-          { price: 1000, image: "grape_jelly", item: "사과", from: "용가리" },
+          {
+            price: 1000,
+            image: "beatles",
+            item: "포도",
+            date: "2024.03.23",
+            from: "용가리",
+          },
+          {
+            price: 1000,
+            image: "grape_jelly",
+            item: "사과",
+            date: "2024.03.23",
+            from: "용가리",
+          },
         ]}
         foldable={true}
       />
@@ -94,8 +124,20 @@ const History = () => {
           </ProductListHeader>
         }
         products={[
-          { price: 1000, image: "beatles", item: "포도", from: "용가리" },
-          { price: 1000, image: "grape_jelly", item: "사과", from: "용가리" },
+          {
+            price: 1000,
+            image: "beatles",
+            item: "포도",
+            date: "2024.03.23",
+            from: "용가리",
+          },
+          {
+            price: 1000,
+            image: "grape_jelly",
+            item: "사과",
+            date: "2024.03.23",
+            from: "용가리",
+          },
         ]}
         foldable={true}
       />
