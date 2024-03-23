@@ -1,5 +1,4 @@
 import { useState } from "react";
-import logoLarge from "assets/logo-large.svg";
 import styled from "styled-components";
 import TextInput from "component/TextInput";
 import Button from "component/Button";
