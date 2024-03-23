@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { priceRange } from "utils";
 
 type Props = {
   price: number;
@@ -58,18 +59,6 @@ const ProductPrice = styled.div`
 `;
 
 const ProductCard = ({ price, image, text, selected }: Props) => {
-  const priceRange = (price: number) => {
-    if (price <= 500) {
-      return "500";
-    } else if (price <= 1000) {
-      return "1000";
-    } else if (price <= 2000) {
-      return "2000";
-    } else {
-      return "error";
-    }
-  };
-  console.log(`/item/${priceRange(price)}/${image}.png`);
   return (
     <ProductCardInner selected={!!selected}>
       <ProductImage
