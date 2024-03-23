@@ -27,3 +27,27 @@ export interface Gift {
   receiverId: string;
   receiver: User;
 }
+
+export type GiftDetail = {
+  deletedAt: string | null;
+  id: string;
+  itemId: string;
+  letter: string;
+  receivedAt: string;
+  receiverId: string;
+  repliedLetter: string | null;
+  replyReceivedAt: string | null;
+  replySendedAt: string | null;
+  sendedAt: string;
+  senderId: string;
+  senderName: string;
+};
+
+export type ItemDetail = {
+  id: string;
+  name: string;
+  type: string;
+  photo: string;
+  price: number;
+  description: string;
+};
