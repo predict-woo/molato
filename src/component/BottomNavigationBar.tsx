@@ -20,6 +20,7 @@ const BottomNavigationBar = styled.div`
   height: 60px;
   margin: 0 auto; /* 가운데 정렬을 위해 margin을 자동으로 설정 */
   border-top: 1px solid #e2e2e2; /* 테두리 스타일, 너비 및 색상 지정 */
+  z-index: 1000; /* 화면 위에 표시되도록 높은 숫자로 설정 */
 `;
 
 const BottomNavigation: React.FC = () => {
