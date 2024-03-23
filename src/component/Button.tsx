@@ -11,7 +11,6 @@ const ButtonInner = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
   padding: 16px 48px;
   border-radius: 16px;
   background: var(--primary, #d25151);
