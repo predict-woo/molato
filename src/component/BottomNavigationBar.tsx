@@ -46,7 +46,9 @@ const BottomNavigation: React.FC = () => {
         </Link>
       </IconContainer>
       <IconContainer>
-        <img src={activeNav == "user" ? user_selected : user} />
+        <Link to="/my" className="nav-link" onClick={() => setActiveNav('my')}>
+          <img src={activeNav == 'my' ? user_selected : user} />
+        </Link>
       </IconContainer>
     </BottomNavigationBar>
   );
