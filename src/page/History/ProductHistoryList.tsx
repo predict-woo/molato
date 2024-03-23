@@ -48,7 +48,7 @@ const ProductListHeader = styled.div`
 `;
 
 const ProductHistoryList = ({ products, foldable, title }: Props) => {
-  const [folded, setFolded] = useState(false);
+  const [folded, setFolded] = useState<boolean>(false);
   return (
     <ProductHistoryInner>
       <ProductListHeader>
