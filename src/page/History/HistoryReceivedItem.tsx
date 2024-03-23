@@ -79,7 +79,6 @@ const HistoryReceivedItem = () => {
       },
       onSuccess: () => {
         setSent(true);
-        alert("답장을 보냈습니다");
       },
     });
   };

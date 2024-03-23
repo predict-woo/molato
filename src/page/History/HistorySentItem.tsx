@@ -54,21 +54,6 @@ const HistorySentItem = () => {
     });
   };
 
-  const sendMessage = async () => {
-    await axios({
-      url: `/gift/reply`,
-      method: "post",
-      data: {
-        giftId: id,
-        repliedLetter: message,
-      },
-      onSuccess: () => {
-        setSent(true);
-        alert("답장을 보냈습니다");
-      },
-    });
-  };
-
   useEffect(() => {
     if (!id) return;
     axios({
@@ -96,21 +81,19 @@ const HistorySentItem = () => {
         multiline
         disabled
       />
-      <Divider />
       {giftDetail?.repliedLetter && (
         <>
+          <Divider />
           <Title>
-            <H>{giftDetail?.senderName}</H>님에게
+            <H>{giftDetail?.receiverName}</H>님에게
             <br />
             <H>답장</H>을 받았어요
           </Title>
 
           <TextInput
             placeholder=""
-            value={message}
-            onChange={(e) =>
-              setMessage((e.target as HTMLTextAreaElement).value)
-            }
+            value={giftDetail.repliedLetter}
+            onChange={() => {}}
             type="default"
             multiline
             disabled={true}
