@@ -33,7 +33,6 @@ const AppContent = styled.div`
 
 function App() {
   const { open } = useRecoilValue(modalState);
-  console.log(open);
   return (
     <AppInner>
       <AppContent>

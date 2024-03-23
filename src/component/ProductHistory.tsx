@@ -78,7 +78,6 @@ const ProductHistory = ({ gift, onClick }: Props) => {
       method: "get",
     });
     setProduct(res);
-    console.log(res);
   };
 
   function extractKoreanDate(dateTimeString: string) {

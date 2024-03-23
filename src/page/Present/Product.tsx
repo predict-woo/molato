@@ -38,7 +38,6 @@ const ProductSection = ({
       method: "get",
     });
     setProductList(res);
-    console.log(res);
   };
 
   useEffect(() => {

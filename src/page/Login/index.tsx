@@ -61,7 +61,6 @@ const Login = () => {
         password,
       },
       onSuccess: () => {
-        console.log("로그인 성공");
         navigate("/");
       },
     });
