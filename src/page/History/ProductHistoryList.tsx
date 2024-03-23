@@ -7,6 +7,7 @@ type Props = {
     price: number;
     image: string;
     item: string;
+    date: string;
     from: string;
   }[];
   title: React.ReactNode;
@@ -47,7 +48,7 @@ const ProductListHeader = styled.div`
 `;
 
 const ProductHistoryList = ({ products, foldable, title }: Props) => {
-  const [folded, setFolded] = useState(false);
+  const [folded, setFolded] = useState<boolean>(false);
   return (
     <ProductHistoryInner>
       <ProductListHeader>
@@ -80,6 +81,7 @@ const ProductHistoryList = ({ products, foldable, title }: Props) => {
             price={product.price}
             image={product.image}
             item={product.item}
+            date={product.date}
             from={product.from}
             onClick={() => (window.location.href = `/history/${index}`)}
           />
