@@ -9,16 +9,20 @@ const useModal = () => {
   const setAlert = (
     title: string,
     content: React.ReactNode,
-    onConfirm: () => void
+    onConfirm?: () => void,
+    onCancel?: () => void
   ) => {
     setModal({
       title,
       content,
       onConfirm: () => {
-        onConfirm();
+        onConfirm?.();
         closeModal();
       },
-      onCancel: closeModal,
+      onCancel: () => {
+        onCancel?.();
+        closeModal();
+      },
       open: true,
     });
   };

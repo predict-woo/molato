@@ -5,11 +5,8 @@ import { useEffect, useState } from "react";
 
 const HomeInner = styled.div`
   width: 100%;
-  /* height: calc(100vh - 120px - 48px); */
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
   gap: 16px;
   flex: 1 0 0;
   align-self: stretch;
@@ -25,7 +22,6 @@ const Home = () => {
       setIntervalDuration((prevDuration) =>
         prevDuration === 1000 ? 500 : 1000
       );
-      // scroll down to bottom
     }, intervalDuration);
 
     return () => clearInterval(interval);

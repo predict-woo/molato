@@ -151,7 +151,15 @@ const History = () => {
             <H>준 선물</H> 목록 ({sended?.length}개)
           </ProductListHeader>
         }
-        products={sended || []}
+        products={
+          sended?.map((gift) => {
+            return {
+              ...gift,
+              receiverName: gift.senderName,
+              senderName: gift.receiverName,
+            };
+          }) || []
+        }
         foldable={true}
         type="sent"
       />

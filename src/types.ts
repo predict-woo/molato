@@ -22,6 +22,8 @@ export interface Gift {
   letter: string;
   repliedLetter: string;
   itemId: string;
+  itemImage: string;
+  itemName: string;
   item: Product;
   senderId: string;
   sender: User;

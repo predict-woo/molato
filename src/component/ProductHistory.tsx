@@ -69,17 +69,6 @@ const ProductFrom = styled.div`
 `;
 
 const ProductHistory = ({ gift, onClick }: Props) => {
-  const [product, setProduct] = useState<Product | null>(null);
-
-  const axios = useAxios();
-  const getProductFromGift = async () => {
-    const res = await axios({
-      url: `/item/${gift.itemId}`,
-      method: "get",
-    });
-    setProduct(res);
-  };
-
   function extractKoreanDate(dateTimeString: string) {
     // Date 객체 생성 (UTC 시간으로부터)
     const date = new Date(dateTimeString);
@@ -96,17 +85,13 @@ const ProductHistory = ({ gift, onClick }: Props) => {
     return `${year}-${month}-${day}`;
   }
 
-  useEffect(() => {
-    getProductFromGift();
-  }, []);
-
-  if (!product) return null;
+  if (!gift) return null;
   return (
     <ProductInfoInner onClick={onClick}>
-      <ProductImage src={product.photo}></ProductImage>
+      <ProductImage src={gift.itemImage}></ProductImage>
       <ProductTextOuter>
         <div style={{ display: "flex" }}>
-          <ProductTitle>{product.name}</ProductTitle>
+          <ProductTitle>{gift.itemName}</ProductTitle>
           <ProductDate>{extractKoreanDate(gift.date)}</ProductDate>
         </div>
         <ProductFrom>

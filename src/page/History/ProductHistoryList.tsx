@@ -73,7 +73,7 @@ const ProductHistoryList = ({ products, foldable, title, type }: Props) => {
       </ProductListHeader>
 
       {products.length != 0 && (
-        <ProductListInner folded={folded}>
+        <ProductListInner folded={!!folded}>
           {products.map((gift) => (
             <ProductHistory
               key={gift.id}
