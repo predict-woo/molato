@@ -6,12 +6,13 @@ type Props = {
   image: string;
   text: string;
   selected?: boolean;
+  onClick?: () => void;
 };
 
 const ProductCardInner = styled.div<{ selected: boolean }>`
+  flex: 1;
+  position: relative;
   display: flex;
-  width: 104px;
-  height: 152px;
   padding: 12px;
   flex-direction: column;
   align-items: flex-start;
@@ -21,12 +22,15 @@ const ProductCardInner = styled.div<{ selected: boolean }>`
   background: var(--white, #fff);
   box-shadow: -1px 2px 4px 0px rgba(0, 0, 0, 0.25);
   border: ${(props) =>
-    props.selected ? "1px solid var(--primary, #D25151);" : "none"};
+    props.selected
+      ? "1px solid var(--primary, #D25151)"
+      : "1px solid var(--white, #fff)"};
 `;
 
 const ProductImage = styled.img`
-  flex: 1 0 0;
-  align-self: stretch;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   border: 1px solid var(--gray-light, #eee);
   border-radius: 16px;
 `;
@@ -58,10 +62,10 @@ const ProductPrice = styled.div`
   line-height: normal;
 `;
 
-const ProductCard = ({ price, image, text, selected }: Props) => {
+const ProductCard = ({ price, image, text, selected, onClick }: Props) => {
   return (
-    <ProductCardInner selected={!!selected}>
-      <ProductImage src={getImageUrl(price, image)}></ProductImage>
+    <ProductCardInner selected={!!selected} onClick={onClick}>
+      <ProductImage src={getImageUrl(price, image)} />
       <ProductTextOuter>
         <ProductTitle>{text}</ProductTitle>
         <ProductPrice>{price}원</ProductPrice>
