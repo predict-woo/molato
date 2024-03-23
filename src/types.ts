@@ -24,8 +24,10 @@ export interface Gift {
   item: Product;
   senderId: string;
   sender: User;
+  senderName: string;
   receiverId: string;
   receiver: User;
+  sendedAt: string;
 }
 
 export type GiftDetail = {

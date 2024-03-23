@@ -73,15 +73,11 @@ const ProductHistoryList = ({ products, foldable, title }: Props) => {
 
       {products.length != 0 && (
         <ProductListInner folded={folded}>
-          {products.map((product) => (
+          {products.map((gift) => (
             <ProductHistory
-              key={product.id}
-              id={product.id}
-              itemImage={product.itemImage}
-              itemName={product.itemName}
-              date={product.date}
-              from={product.from}
-              onClick={() => navigation(`/history/${product.id}`)}
+              key={gift.id}
+              gift={gift}
+              onClick={() => navigation(`/history/${gift.id}`)}
             />
           ))}
         </ProductListInner>
