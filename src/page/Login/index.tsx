@@ -43,12 +43,13 @@ const SignInText = styled.div`
 const UH = styled(H)`
   color: var(--primary-light, #ed9999) !important;
   text-decoration: underline;
+  cursor: pointer;
 `;
 
 const Login = () => {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const navigte = useNavigate();
+  const navigate = useNavigate();
   const axios = useAxios();
 
   const handleLogin = async () => {
@@ -61,7 +62,7 @@ const Login = () => {
       },
       onSuccess: () => {
         console.log("로그인 성공");
-        navigte("/");
+        navigate("/");
       },
     });
   };
@@ -84,8 +85,8 @@ const Login = () => {
         />
         <Button text="로그인" onClick={() => handleLogin()} />
         <SignInText>
-          계정이 없으신가요?
-          <UH onClick={() => navigte("/signin")}> 회원가입하기</UH>
+          계정이 없으신가요?&nbsp;
+          <UH onClick={() => navigate("/signin")}>회원가입하기</UH>
         </SignInText>
       </InputStyled>
     </LoginContent>

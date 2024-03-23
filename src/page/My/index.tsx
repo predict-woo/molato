@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Button from "component/Button";
 import { User } from "types";
 import useAxios from "hook/useAxios";
+import { useNavigate } from "react-router-dom";
 
 const MyInner = styled.div`
   display: flex;
@@ -55,10 +56,23 @@ const My = () => {
     setUser(newUser);
   };
 
+  const navigate = useNavigate();
+  const logout = async () => {
+    await axios({
+      url: "/auth/signout",
+      method: "post",
+      data: {},
+      onSuccess: () => {
+        console.log("로그아웃");
+        navigate("/signin");
+      },
+    });
+  };
+
   return (
     <MyInner>
       {currentUser && <Profile user={currentUser} saveProfile={saveProfile} />}
-      <Button text="로그아웃" onClick={() => console.log("로그아웃")} />
+      <Button text="로그아웃" onClick={logout} />
     </MyInner>
   );
 };

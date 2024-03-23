@@ -18,14 +18,17 @@ export interface Product {
 
 export interface Gift {
   id: string;
+  date: string;
   letter: string;
   repliedLetter: string;
   itemId: string;
   item: Product;
   senderId: string;
   sender: User;
+  senderName: string;
   receiverId: string;
   receiver: User;
+  sendedAt: string;
 }
 
 export type GiftDetail = {

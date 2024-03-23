@@ -49,7 +49,7 @@ const ProductSection = ({
     <>
       <MainTextWrapper>
         <HighlightedMainText>{selectedUser.name}</HighlightedMainText>
-        <MainText>에게</MainText>
+        <MainText>님에게</MainText>
         <br />
         <HighlightedMainText>주고 싶은 선물</HighlightedMainText>
         <MainText>을 고르세요</MainText>

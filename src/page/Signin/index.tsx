@@ -43,6 +43,21 @@ const SignInText = styled.div`
   line-height: normal;
 `;
 
+const LoginText = styled.div`
+  color: var(--black, #333);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`;
+
+const UH = styled(H)`
+  color: var(--primary-light, #ed9999) !important;
+  text-decoration: underline;
+  cursor: pointer;
+`;
+
 const Signin = () => {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -139,6 +154,10 @@ const Signin = () => {
           }
           onClick={() => handleSignin()}
         />
+        <LoginText>
+          계정이 있으신가요?&nbsp;
+          <UH onClick={() => navigate("/login")}>로그인하기</UH>
+        </LoginText>
       </InputStyled>
     </SigninContent>
   );
