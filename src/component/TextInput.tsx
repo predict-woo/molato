@@ -46,6 +46,8 @@ const StyledInput = styled.input<{ type: "default" | "disabled" | "error" }>`
   font-weight: 400;
   line-height: 20px;
   outline: none;
+  color: ${(props) =>
+    props.type === "disabled" ? "color: var(--gray-light, #EEE);" : "none"};
 `;
 
 const TextInputs = {

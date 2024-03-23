@@ -12,7 +12,6 @@ const AppInner = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   background-color: #f0f0f0;
 `;
 
@@ -20,8 +19,6 @@ const AppContent = styled.div`
   background-color: #fff;
   max-width: 500px;
   width: 100%;
-  overflow: hidden;
-  height: 100vh;
 `;
 
 function App() {
