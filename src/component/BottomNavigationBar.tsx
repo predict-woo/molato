@@ -11,6 +11,7 @@ const BottomNavigationBar = styled.div`
   position: sticky;
   bottom: 0;
   background-color: #fff;
+  align-items: center;
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
@@ -23,8 +24,30 @@ const BottomNavigationBar = styled.div`
 `;
 
 const IconContainer = styled.div`
+  width: 40px;
+  height: 40px;
+  position: relative;
   display: flex;
   align-items: center;
+`;
+
+const NotificationIcon = styled.div`
+  position: absolute; /* 포지션을 절대적(absolute)으로 설정하여 상위 요소에 상대적으로 위치합니다. */
+  top: 0px; /* 위에서 0px 위치 */
+  right: 0px; /* 오른쪽에서 0px 위치 */
+  width: 18px; /* 원의 지름 */
+  height: 18px; /* 원의 지름 */
+  background-color: #d25151; /* 빨간색 배경 */
+  border-radius: 50%; /* 원 모양 */
+  border-style:solid;
+  border-color: #ffffff;
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; /* 아이콘 텍스트 색상 */
+  font-size: 12px; /* 아이콘 텍스트 크기 */
+  font-weight: bold; /* 아이콘 텍스트 굵게 */
 `;
 
 const BottomNavigation: React.FC = () => {
@@ -35,6 +58,7 @@ const BottomNavigation: React.FC = () => {
         <Link to="/history" className="nav-link">
           <img src={pathname == "/history" ? present_selected : present}></img>
         </Link>
+        <NotificationIcon>3</NotificationIcon>
       </IconContainer>
       <IconContainer>
         <Link to="/present" className="nav-link">
