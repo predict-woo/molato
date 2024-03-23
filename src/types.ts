@@ -18,6 +18,7 @@ export interface Product {
 
 export interface Gift {
   id: string;
+  date: string;
   letter: string;
   repliedLetter: string;
   itemId: string;
