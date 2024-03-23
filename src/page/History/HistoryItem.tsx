@@ -72,7 +72,13 @@ const HistoryItem = () => {
         multiline
         disabled={sent}
       />
-      {!sent && <Button onClick={() => setSent(true)} text="답장 보내기" />}
+      {!sent && (
+        <Button
+          onClick={() => setSent(true)}
+          text="답장 보내기"
+          disabled={message === ""}
+        />
+      )}
     </HistoryItemContent>
   );
 };
