@@ -28,6 +28,7 @@ export interface Gift {
   senderName: string;
   receiverId: string;
   receiver: User;
+  receiverName: string;
   sendedAt: string;
 }
 

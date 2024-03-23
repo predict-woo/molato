@@ -2,10 +2,10 @@ import ProductHistory from "component/ProductHistory";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { HistoryItem } from ".";
+import { Gift } from "types";
 
 type Props = {
-  products: HistoryItem[];
+  products: Gift[];
   title: React.ReactNode;
   foldable?: boolean;
   type: "sent" | "received";

@@ -1,4 +1,3 @@
-import Button from "component/Button";
 import { H } from "component/H";
 import ProductInfo from "component/ProductInfo";
 import TextInput from "component/TextInput";
@@ -35,8 +34,6 @@ const Divider = styled.div`
 
 const HistorySentItem = () => {
   const { id } = useParams<{ id: string }>();
-  const [sent, setSent] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
   const [giftDetail, setGiftDetail] = useState<GiftDetail>();
   const [itemDetail, setItemDetail] = useState<ItemDetail>();
 

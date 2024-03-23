@@ -4,6 +4,7 @@ import styled from "styled-components";
 import ProductHistoryList from "./ProductHistoryList";
 import useAxios from "hook/useAxios";
 import { useEffect, useState } from "react";
+import { Gift } from "types";
 
 const HistoryContent = styled.div`
   display: flex;
@@ -42,21 +43,12 @@ const UncheckedProducts = styled.div`
   border: 1px solid var(--primary, #d25151);
 `;
 
-export type HistoryItem = {
-  id: string;
-  itemId: string;
-  itemImage: string;
-  itemName: string;
-  date: string;
-  from: string;
-};
-
 const History = () => {
   const axios = useAxios();
-  const [newGift, setNewGift] = useState<HistoryItem[]>();
-  const [newReply, setNewReply] = useState<HistoryItem[]>();
-  const [recieved, setRecieved] = useState<HistoryItem[]>();
-  const [sended, setSended] = useState<HistoryItem[]>();
+  const [newGift, setNewGift] = useState<Gift[]>();
+  const [newReply, setNewReply] = useState<Gift[]>();
+  const [recieved, setRecieved] = useState<Gift[]>();
+  const [sended, setSended] = useState<Gift[]>();
 
   const getNewGift = async () => {
     await axios({
