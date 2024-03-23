@@ -5,6 +5,7 @@ import Home from "page/Home";
 import styled from "styled-components";
 import Present from "page/Present";
 import History from "page/History";
+import My from "page/My";
 
 const AppInner = styled.div`
   display: flex;
@@ -31,6 +32,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/present" element={<Present />} />
             <Route path="/history" element={<History />} />
+            <Route path="/my" element={<My />} />
           </Route>
         </Routes>
       </AppContent>
