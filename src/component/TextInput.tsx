@@ -10,7 +10,6 @@ type Props = {
 
 const TextInputInner = styled.div`
   display: flex;
-  width: 300px;
   padding: 16px 20px;
   justify-content: center;
   align-items: center;
@@ -47,7 +46,13 @@ const StyledInput = styled.input<{ type: "default" | "disabled" | "error" }>`
   line-height: 20px;
   outline: none;
   color: ${(props) =>
-    props.type === "disabled" ? "color: var(--gray-light, #EEE);" : "none"};
+    props.type === "disabled"
+      ? "var(--gray-light, #EEE)"
+      : "var(--black, #333)"};
+
+  &::placeholder {
+    color: var(--gray-light, #eee);
+  }
 `;
 
 const TextInputs = {
