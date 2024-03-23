@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { getImageUrl } from "utils";
+import { Product } from "types";
 
 type Props = {
-  price: number;
-  image: string;
-  text: string;
+  product: Product;
   selected?: boolean;
   onClick?: () => void;
 };
@@ -62,13 +60,13 @@ const ProductPrice = styled.div`
   line-height: normal;
 `;
 
-const ProductCard = ({ price, image, text, selected, onClick }: Props) => {
+const ProductCard = ({ product, selected, onClick }: Props) => {
   return (
     <ProductCardInner selected={!!selected} onClick={onClick}>
-      <ProductImage src={getImageUrl(price, image)} />
+      <ProductImage src={product.photo} />
       <ProductTextOuter>
-        <ProductTitle>{text}</ProductTitle>
-        <ProductPrice>{price}원</ProductPrice>
+        <ProductTitle>{product.name}</ProductTitle>
+        <ProductPrice>{product.price}원</ProductPrice>
       </ProductTextOuter>
     </ProductCardInner>
   );

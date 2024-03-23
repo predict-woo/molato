@@ -1,10 +1,8 @@
 import styled from "styled-components";
+import { Product } from "types";
 
 type Props = {
-  price: number;
-  image: string;
-  title: string;
-  description: string;
+  product: Product;
 };
 
 const ProductInfoInner = styled.div`
@@ -53,12 +51,12 @@ const ProductDescription = styled.div`
   line-height: 20px;
 `;
 
-const ProductInfo = ({ image, title, description }: Props) => (
+const ProductInfo = ({ product }: Props) => (
   <ProductInfoInner>
-    <ProductImage src={image}></ProductImage>
+    <ProductImage src={product.photo}></ProductImage>
     <ProductTextOuter>
-      <ProductTitle>{title}</ProductTitle>
-      <ProductDescription>{description}</ProductDescription>
+      <ProductTitle>{product.name}</ProductTitle>
+      <ProductDescription>{product.description}</ProductDescription>
     </ProductTextOuter>
   </ProductInfoInner>
 );

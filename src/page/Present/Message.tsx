@@ -6,39 +6,34 @@ import {
 } from "./atoms/MainText";
 import ProductInfo from "component/ProductInfo";
 import TextInput from "component/TextInput";
-import { useState } from "react";
+import { Product, User } from "types";
 
 type Props = {
-  nextStep: () => void;
+  sendGift: () => void;
+  selectedUser: User;
+  selectedProduct: Product;
+  message: string;
+  setMessage: (message: string) => void;
 };
 
-const selectedProduct = {
-  price: 500,
-  image: "chuppacups",
-  title: "추파춥스",
-  description:
-    "이 사탕을 받은 당사자는 오늘 더 달달한 하루를 보낼 수 있을거에요 :)",
-};
-
-const Message = ({ nextStep }: Props) => {
-  const [message, setMessage] = useState<string>("");
-
+const Message = ({
+  sendGift,
+  selectedUser,
+  selectedProduct,
+  message,
+  setMessage,
+}: Props) => {
   return (
     <>
       <MainTextWrapper>
-        <HighlightedMainText>몰라또</HighlightedMainText>
+        <HighlightedMainText>{selectedUser.name}</HighlightedMainText>
         <MainText>에게 줄 선물을 고르셨군요!</MainText>
         <br />
         <HighlightedMainText>마음을 담은 편지</HighlightedMainText>
         <MainText>를 함께 작성해주세요</MainText>
       </MainTextWrapper>
 
-      <ProductInfo
-        price={selectedProduct.price}
-        image={selectedProduct.image}
-        title={selectedProduct.title}
-        description={selectedProduct.description}
-      />
+      <ProductInfo product={selectedProduct} />
       <TextInput
         type="default"
         placeholder="마음을 담아 편지를 작성하세요"
@@ -46,7 +41,7 @@ const Message = ({ nextStep }: Props) => {
         onChange={(e) => setMessage((e.target as HTMLTextAreaElement).value)}
       />
 
-      <Button text="선물 보내기" onClick={nextStep} disabled={message === ""} />
+      <Button text="선물 보내기" onClick={sendGift} disabled={message === ""} />
     </>
   );
 };
