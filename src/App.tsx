@@ -4,7 +4,9 @@ import Home from "page/Home";
 import styled from "styled-components";
 import Present from "page/Present";
 import History from "page/History";
-import HistoryItem from "page/History/HistoryItem";
+import HistorySentItem from "page/History/HistorySentItem";
+import HistoryReceivedItem from "page/History/HistoryReceivedItem";
+
 import Login from "page/Login";
 import My from "page/My";
 import Layout from "page/Layout";
@@ -39,7 +41,11 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/present" element={<Present />} />
-            <Route path="/history/:id" element={<HistoryItem />} />
+            <Route path="/history/sent/:id" element={<HistorySentItem />} />
+            <Route
+              path="/history/received/:id"
+              element={<HistoryReceivedItem />}
+            />
             <Route path="/history" element={<History />} />
             <Route path="/my" element={<My />} />
           </Route>

@@ -8,6 +8,7 @@ type Props = {
   products: HistoryItem[];
   title: React.ReactNode;
   foldable?: boolean;
+  type: "sent" | "received";
 };
 
 const ProductHistoryInner = styled.div`
@@ -43,7 +44,7 @@ const ProductListHeader = styled.div`
   z-index: 2;
 `;
 
-const ProductHistoryList = ({ products, foldable, title }: Props) => {
+const ProductHistoryList = ({ products, foldable, title, type }: Props) => {
   const [folded, setFolded] = useState<boolean>(false);
   const navigation = useNavigate();
   return (
@@ -81,7 +82,7 @@ const ProductHistoryList = ({ products, foldable, title }: Props) => {
               itemName={product.itemName}
               date={product.date}
               from={product.from}
-              onClick={() => navigation(`/history/${product.id}`)}
+              onClick={() => navigation(`/history/${type}/${product.id}`)}
             />
           ))}
         </ProductListInner>
