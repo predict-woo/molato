@@ -4,6 +4,7 @@ import styled from "styled-components";
 import TextInput from "component/TextInput";
 import Button from "component/Button";
 import { H } from "component/H";
+import useAxios from "hook/useAxios";
 
 const SigninContent = styled.div`
   padding: 24px;
@@ -43,15 +44,22 @@ const SignInText = styled.div`
   line-height: normal;
 `;
 
-const UH = styled(H)`
-  color: var(--primary-light, #ed9999) !important;
-  text-decoration: underline;
-`;
-
 const Signin = () => {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordRepeat, setPasswordRepeat] = useState<string>("");
+  const axios = useAxios();
+
+  const handleSignin = async () => {
+    await axios({
+      url: "/auth/signup",
+      method: "post",
+      data: {
+        name: id,
+        password,
+      },
+    });
+  };
 
   return (
     <SigninContent>
@@ -85,11 +93,9 @@ const Signin = () => {
 
         <Button
           text="회원가입"
-          onClick={() => console.log(`id: ${id}, password: ${password}`)}
+          disabled={password !== passwordRepeat}
+          onClick={() => handleSignin()}
         />
-        <SignInText>
-          계정이 없으신가요? <UH>회원가입하기</UH>
-        </SignInText>
       </InputStyled>
     </SigninContent>
   );

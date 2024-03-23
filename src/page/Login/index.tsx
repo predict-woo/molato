@@ -4,6 +4,8 @@ import styled from "styled-components";
 import TextInput from "component/TextInput";
 import Button from "component/Button";
 import { H } from "component/H";
+import { useNavigate } from "react-router-dom";
+import useAxios from "hook/useAxios";
 
 const LoginContent = styled.div`
   padding: 24px;
@@ -51,6 +53,19 @@ const UH = styled(H)`
 const Login = () => {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const navigte = useNavigate();
+  const axios = useAxios();
+
+  const handleLogin = async () => {
+    await axios({
+      url: "/auth/signin",
+      method: "post",
+      data: {
+        name: id,
+        password,
+      },
+    });
+  };
 
   return (
     <LoginContent>
@@ -68,12 +83,10 @@ const Login = () => {
           onChange={(e) => setPassword((e.target as HTMLInputElement).value)}
           type="default"
         />
-        <Button
-          text="로그인"
-          onClick={() => console.log(`id: ${id}, password: ${password}`)}
-        />
+        <Button text="로그인" onClick={() => handleLogin()} />
         <SignInText>
-          계정이 없으신가요? <UH>회원가입하기</UH>
+          계정이 없으신가요?{" "}
+          <UH onClick={() => navigte("/signin")}>회원가입하기</UH>
         </SignInText>
       </InputStyled>
     </LoginContent>

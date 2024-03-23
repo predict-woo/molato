@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/logo.svg";
 import chevronLeft from "../assets/chevron-left.svg";
@@ -38,6 +38,7 @@ const Header = () => {
         return "logo";
     }
   };
+  const navigate = useNavigate();
 
   return (
     <HeaderInner>
@@ -45,7 +46,7 @@ const Header = () => {
         <img
           src={logo}
           alt="logo"
-          onClick={() => (window.location.href = "/")}
+          onClick={() => navigate(-1)}
           style={{ cursor: "pointer" }}
         />
       ) : (
@@ -53,7 +54,7 @@ const Header = () => {
           <img
             src={chevronLeft}
             alt="back"
-            onClick={() => (window.location.href = "/")}
+            onClick={() => navigate(-1)}
             style={{ cursor: "pointer" }}
           />
         </HeaderNav>
