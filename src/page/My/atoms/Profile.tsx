@@ -114,7 +114,12 @@ const Profile = ({ user, saveProfile }: Props) => {
 
   const editButton = (changeTo: EditMode) => {
     return editMode === null ? (
-      <img src={edit} alt="edit" onClick={() => setEditMode(changeTo)} />
+      <img
+        src={edit}
+        alt="edit"
+        onClick={() => setEditMode(changeTo)}
+        style={{ cursor: "pointer" }}
+      />
     ) : (
       <img
         src={editDisabled}
@@ -134,8 +139,14 @@ const Profile = ({ user, saveProfile }: Props) => {
             setEditMode(null);
             saveProfile(user.profilePhoto, user.name, profileIntroduction);
           }}
+          style={{ cursor: "pointer" }}
         />
-        <img src={close} alt="close" onClick={() => setEditMode(null)} />
+        <img
+          src={close}
+          alt="close"
+          onClick={() => setEditMode(null)}
+          style={{ cursor: "pointer" }}
+        />
       </div>
     );
   };
