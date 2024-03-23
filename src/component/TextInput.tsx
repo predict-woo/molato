@@ -62,7 +62,7 @@ const StyledInput = styled.input<{
 `;
 
 const StyledTextarea = styled.textarea<{
-  type: "default" | "disabled" | "error";
+  type: "default" | "disabled" | "error" | "password";
   height: number;
 }>`
   width: 100%;
