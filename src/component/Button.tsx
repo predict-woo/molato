@@ -7,6 +7,7 @@ type Props = {
 };
 
 const ButtonInner = styled.button`
+  width: 100%;
   border: none;
   display: flex;
   align-items: center;

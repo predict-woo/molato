@@ -54,7 +54,8 @@ const StyledInput = styled.input<{ type: "default" | "disabled" | "error" }>`
       : "var(--black, #333)"};
 
   &::placeholder {
-    color: var(--gray-light, #eee);
+    color: ${(props) =>
+      props.type === "disabled" ? "var(--gray-light, #EEE)" : "inherit"};
   }
 `;
 

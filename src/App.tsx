@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Present from "page/Present";
 import History from "page/History";
 import HistoryItem from "page/History/HistoryItem";
+import Login from "page/Login";
 
 const AppInner = styled.div`
   display: flex;
@@ -34,6 +35,7 @@ function App() {
             <Route path="/history/:id" element={<HistoryItem />} />
             <Route path="/history" element={<History />} />
           </Route>
+          <Route path="/login" element={<Login />} />
         </Routes>
       </AppContent>
     </AppInner>
