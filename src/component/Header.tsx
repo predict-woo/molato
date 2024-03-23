@@ -3,6 +3,9 @@ import styled from "styled-components";
 import logo from "../assets/logo.svg";
 
 const HeaderInner = styled.div`
+  z-index: 100;
+  position: sticky;
+  top: 0;
   display: flex;
   width: 100%;
   height: 60px;
@@ -13,6 +16,8 @@ const HeaderInner = styled.div`
   flex-shrink: 0;
   flex-grow: 0;
   box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  background-color: transparent;
 `;
 
 const HeaderNav = styled.div`
@@ -26,10 +31,11 @@ const TotalContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   height: 100%;
+  min-height: 100vh;
 `;
 
 const RouteContainer = styled.div`
-  margin: 24px;
+  padding: 24px;
   flex-grow: 1;
   box-sizing: border-box;
 `;
