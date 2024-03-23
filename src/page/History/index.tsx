@@ -90,11 +90,6 @@ const History = () => {
     });
   };
 
-  console.log("newGift", newGift);
-  console.log("newReply", newReply);
-  console.log("recieved", recieved);
-  console.log("send", sended);
-
   useEffect(() => {
     getNewGift();
     getNewReply();
