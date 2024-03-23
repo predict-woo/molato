@@ -86,12 +86,7 @@ const HistoryItem = () => {
         <br />
         <H>마음을 담은 선물</H>을 보냈어요
       </Title>
-      <ProductInfo
-        price={itemDetail?.price || 0}
-        image={itemDetail?.photo || ""}
-        title={itemDetail?.name || ""}
-        description={itemDetail?.description || ""}
-      />
+      {itemDetail && <ProductInfo product={itemDetail} />}
       <TextInput
         placeholder=""
         value={giftDetail?.letter || ""}
