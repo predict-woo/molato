@@ -4,7 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import Home from "page/Home";
 import styled from "styled-components";
 import Present from "page/Present";
+import BottomNavigation from "component/BottomNavigationBar.tsx";
 import History from "page/History";
+import HistoryItem from "page/History/HistoryItem";
 import My from "page/My";
 
 const AppInner = styled.div`
@@ -31,11 +33,13 @@ function App() {
           <Route path="/" element={<Header />}>
             <Route index element={<Home />} />
             <Route path="/present" element={<Present />} />
+            <Route path="/history/:id" element={<HistoryItem />} />
             <Route path="/history" element={<History />} />
             <Route path="/my" element={<My />} />
           </Route>
         </Routes>
       </AppContent>
+      <BottomNavigation />
     </AppInner>
   );
 }

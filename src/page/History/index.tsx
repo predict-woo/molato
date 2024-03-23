@@ -3,7 +3,7 @@ import { H } from "component/H";
 import styled from "styled-components";
 import ProductHistoryList from "./ProductHistoryList";
 
-const PresentContent = styled.div`
+const HistoryContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -42,7 +42,7 @@ const UncheckedProducts = styled.div`
 
 const History = () => {
   return (
-    <PresentContent>
+    <HistoryContent>
       <Title>
         <H>몰라또</H>와
         <br />
@@ -86,7 +86,7 @@ const History = () => {
         ]}
         foldable={true}
       />
-    </PresentContent>
+    </HistoryContent>
   );
 };
 

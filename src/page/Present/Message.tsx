@@ -43,7 +43,7 @@ const Message = ({ nextStep }: Props) => {
         type="default"
         placeholder="마음을 담아 편지를 작성하세요"
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={(e) => setMessage((e.target as HTMLTextAreaElement).value)}
       />
 
       <Button text="선물 보내기" onClick={nextStep} disabled={message === ""} />
