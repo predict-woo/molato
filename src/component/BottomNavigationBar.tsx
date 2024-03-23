@@ -37,7 +37,7 @@ const BottomNavigation: React.FC = () => {
         </Link>
       </div>
       <div>
-        <img src='/src/assets/user.svg' color={activeNav == 'user' ? user_selected : user} />
+        <img src={activeNav == 'user' ? user_selected : user} />
       </div>
     </BottomNavigationBar>
   );
