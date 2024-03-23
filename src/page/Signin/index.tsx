@@ -7,6 +7,8 @@ import useAxios from "hook/useAxios";
 import LottieLogo from "component/LottieLogo";
 import { checkIdPassword } from "utils";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { modalState } from "atom/modal";
 
 const SigninContent = styled.div`
   padding: 24px;
@@ -47,6 +49,7 @@ const Signin = () => {
   const [passwordRepeat, setPasswordRepeat] = useState<string>("");
   const axios = useAxios();
   const navigate = useNavigate();
+  const setModal = useSetRecoilState(modalState);
 
   const handleSignin = async () => {
     await axios({
@@ -57,8 +60,31 @@ const Signin = () => {
         password,
       },
       onSuccess: () => {
-        alert("회원가입에 성공했습니다");
-        navigate("/login");
+        setModal({
+          open: true,
+          title: "회원가입 성공",
+          content: "회원가입이 완료되었습니다",
+          onConfirm: () => {
+            navigate("/login");
+            setModal((prev) => ({ ...prev, open: false }));
+          },
+          onCancel: () => {
+            navigate("/login");
+          },
+        });
+      },
+      onError: () => {
+        setModal({
+          open: true,
+          title: "회원가입 실패",
+          content: "아이디가 중복됩니다",
+          onConfirm: () => {
+            navigate("/signin");
+          },
+          onCancel: () => {
+            navigate("/signin");
+          },
+        });
       },
     });
   };

@@ -9,6 +9,9 @@ import Login from "page/Login";
 import My from "page/My";
 import Layout from "page/Layout";
 import Signin from "page/Signin";
+import Modal from "component/Modal";
+import { useRecoilValue } from "recoil";
+import { modalState } from "atom/modal";
 
 const AppInner = styled.div`
   display: flex;
@@ -27,6 +30,8 @@ const AppContent = styled.div`
 `;
 
 function App() {
+  const { open } = useRecoilValue(modalState);
+  console.log(open);
   return (
     <AppInner>
       <AppContent>
@@ -43,6 +48,7 @@ function App() {
           <Route path="*" element={<div>Not Found</div>} />
         </Routes>
       </AppContent>
+      {open && <Modal />}
     </AppInner>
   );
 }

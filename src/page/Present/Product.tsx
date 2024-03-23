@@ -8,7 +8,7 @@ import styled from "styled-components";
 import ProductCard from "component/ProductCard";
 import { useEffect, useState } from "react";
 import useAxios from "hook/useAxios";
-import { Product, User } from "types";
+import type { Product, User } from "types";
 
 type Props = {
   nextStep: () => void;
@@ -23,7 +23,7 @@ const ProductCardList = styled.div`
   gap: 12px;
 `;
 
-const Product = ({
+const ProductSection = ({
   nextStep,
   selectedUser,
   selectedProduct,
@@ -78,4 +78,4 @@ const Product = ({
   );
 };
 
-export default Product;
+export default ProductSection;
