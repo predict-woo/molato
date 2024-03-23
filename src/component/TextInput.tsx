@@ -12,10 +12,7 @@ type Props = {
 
 const TextInputInner = styled.div`
   display: flex;
-<<<<<<< HEAD
   width: 100%;
-=======
->>>>>>> f5dbf6d5bfafeedb8323f4850c6746405acfdf2c
   padding: 16px 20px;
   justify-content: center;
   align-items: center;

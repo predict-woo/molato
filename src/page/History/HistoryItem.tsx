@@ -1,3 +1,4 @@
+import Button from "component/Button";
 import { H } from "component/H";
 import ProductInfo from "component/ProductInfo";
 import TextInput from "component/TextInput";
@@ -23,8 +24,16 @@ const Title = styled.div`
   line-height: 28px;
 `;
 
+const Divider = styled.div`
+  border-radius: 10px;
+  background: var(--gray-light, #eee);
+  height: 1px;
+  align-self: stretch;
+`;
+
 const HistoryItem = () => {
   const { id } = useParams<{ id: string }>();
+  const [sent, setSent] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   console.log(id);
 
@@ -42,12 +51,28 @@ const HistoryItem = () => {
         description="용가리"
       />
       <TextInput
-        placeholder="메시지를 입력해주세요"
-        onChange={(e) => setMessage(e.target.value)}
-        value={message}
+        placeholder=""
+        value="오늘 하루 함내세요!"
         type="default"
         multiline
+        disabled
       />
+      <Divider />
+      <Title>
+        <H>대전에 사는 용가리</H>님에게
+        <br />
+        <H>답장</H>을 보내보세요
+      </Title>
+
+      <TextInput
+        placeholder=""
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        type="default"
+        multiline
+        disabled={sent}
+      />
+      {!sent && <Button onClick={() => setSent(true)} text="답장 보내기" />}
     </HistoryItemContent>
   );
 };
