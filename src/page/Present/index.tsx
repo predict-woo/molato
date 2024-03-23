@@ -5,6 +5,7 @@ import Message from "./Message";
 import styled from "styled-components";
 import { Product, User } from "types";
 import useAxios from "hook/useAxios";
+import { useNavigate } from "react-router-dom";
 
 enum Step {
   MOLATO,
@@ -39,6 +40,7 @@ const Present = () => {
   const [message, setMessage] = useState<string>("");
 
   const axios = useAxios();
+  const navigate = useNavigate();
   const sendGift = async () => {
     await axios({
       url: "/gift/send",
@@ -48,8 +50,10 @@ const Present = () => {
         itemId: selectedProduct!.id,
         receiverId: selectedUser!.id,
       },
+      onSuccess: (data) => {
+        navigate(`/history/${data.id}`);
+      },
     });
-    console.log("선물을 보냈습니다.");
   };
 
   return (

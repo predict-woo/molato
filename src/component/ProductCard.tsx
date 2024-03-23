@@ -23,17 +23,18 @@ const ProductCardInner = styled.div<{ selected: boolean }>`
     props.selected
       ? "1px solid var(--primary, #D25151)"
       : "1px solid var(--white, #fff)"};
+  overflow: hidden;
 `;
 
 const ProductImage = styled.img`
   width: 100%;
-  height: 100%;
   overflow: hidden;
   border: 1px solid var(--gray-light, #eee);
   border-radius: 16px;
 `;
 
 const ProductTextOuter = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -42,6 +43,8 @@ const ProductTextOuter = styled.div`
 `;
 
 const ProductTitle = styled.div`
+  flex: 1;
+  width: 100%;
   align-self: stretch;
   color: var(--black, #333);
   font-family: Pretendard;
@@ -49,6 +52,9 @@ const ProductTitle = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const ProductPrice = styled.div`
