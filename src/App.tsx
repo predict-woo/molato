@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Present from "page/Present";
 import History from "page/History";
 import HistoryItem from "page/History/HistoryItem";
+import Login from "page/Login";
 import My from "page/My";
 import Layout from "page/Layout";
 
@@ -36,6 +37,7 @@ function App() {
             <Route path="/history" element={<History />} />
             <Route path="/my" element={<My />} />
           </Route>
+          <Route path="/login" element={<Login />} />
         </Routes>
       </AppContent>
     </AppInner>
