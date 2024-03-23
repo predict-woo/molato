@@ -53,12 +53,21 @@ const Header = () => {
           onClick={() => navigate("/")}
           style={{ cursor: "pointer" }}
         />
+      ) : path2Type(pathname) === "history" ? (
+        <HeaderNav>
+          <img
+            src={chevronLeft}
+            alt="back"
+            onClick={() => navigate("/history")}
+            style={{ cursor: "pointer" }}
+          />
+        </HeaderNav>
       ) : (
         <HeaderNav>
           <img
             src={chevronLeft}
             alt="back"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/")}
             style={{ cursor: "pointer" }}
           />
         </HeaderNav>
