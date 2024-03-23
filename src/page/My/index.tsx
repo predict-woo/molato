@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Profile from "./atoms/Profile";
+import styled from "styled-components";
+import Button from "component/Button";
 
 type User = {
   profile: string;
@@ -13,6 +15,12 @@ const currentUser: User = {
   description: "저에게 선물을 주세또",
 };
 
+const MyInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
 const My = () => {
   const [profile, setProfile] = useState<User>(currentUser);
   const saveProfile = (profile: string, name: string, description: string) => {
@@ -20,14 +28,15 @@ const My = () => {
   };
 
   return (
-    <>
+    <MyInner>
       <Profile
         profile={profile.profile}
         name={profile.name}
         description={profile.description}
         saveProfile={saveProfile}
       />
-    </>
+      <Button text="로그아웃" onClick={() => console.log("로그아웃")} />
+    </MyInner>
   );
 };
 
