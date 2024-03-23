@@ -58,7 +58,7 @@ const Header = () => {
           <img
             src={chevronLeft}
             alt="back"
-            onClick={() => navigate("/")}
+            onClick={() => navigate(-1)}
             style={{ cursor: "pointer" }}
           />
         </HeaderNav>
