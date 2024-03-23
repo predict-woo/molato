@@ -27,7 +27,7 @@ const Message = ({
     <>
       <MainTextWrapper>
         <HighlightedMainText>{selectedUser.name}</HighlightedMainText>
-        <MainText>에게 줄 선물을 고르셨군요!</MainText>
+        <MainText>님에게 줄 선물을 고르셨군요!</MainText>
         <br />
         <HighlightedMainText>마음을 담은 편지</HighlightedMainText>
         <MainText>를 함께 작성해주세요</MainText>
