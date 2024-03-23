@@ -149,7 +149,9 @@ const Profile = ({ profile, name, description, saveProfile }: Props) => {
               placeholder={name}
               type="default"
               value={profileName}
-              onChange={(e) => setProfileName(e.target.value)}
+              onChange={(e) =>
+                setProfileName((e.target as HTMLInputElement).value)
+              }
             />
           ) : (
             <ProfileName>{name}</ProfileName>
@@ -171,7 +173,9 @@ const Profile = ({ profile, name, description, saveProfile }: Props) => {
             placeholder={description}
             type="default"
             value={profileDescription}
-            onChange={(e) => setProfileDescription(e.target.value)}
+            onChange={(e) =>
+              setProfileDescription((e.target as HTMLInputElement).value)
+            }
           />
         ) : (
           <ProfileDescription>{description}</ProfileDescription>
