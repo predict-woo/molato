@@ -46,7 +46,7 @@ const Header = () => {
         <img
           src={logo}
           alt="logo"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate('/')}
           style={{ cursor: "pointer" }}
         />
       ) : (
