@@ -1,7 +1,5 @@
-import useAxios from "hook/useAxios";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Gift, Product } from "types";
+import { Gift } from "types";
 
 type Props = {
   gift: Gift;
