@@ -14,13 +14,13 @@ const ProductInfoInner = styled.div`
   gap: 8px;
   border-radius: 16px;
   background: var(--white, #fff);
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
 `;
 
 const ProductImage = styled.img`
   width: 120px;
   height: 120px;
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
   border-radius: 16px;
 `;
 

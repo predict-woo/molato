@@ -29,7 +29,7 @@ const ProductCardInner = styled.div<{ selected: boolean }>`
 const ProductImage = styled.img`
   width: 100%;
   overflow: hidden;
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
   border-radius: 16px;
 `;
 

@@ -22,13 +22,13 @@ const TextInputInner = styled.div`
 
 const TextInputDefault = styled(TextInputInner)`
   border-radius: 16px;
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
   background: var(--white, #fff);
 `;
 
 const TextInputDisabled = styled(TextInputInner)`
   border-radius: 16px;
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
   background: var(--white, #fff);
 `;
 
@@ -52,11 +52,11 @@ const StyledInput = styled.input<{
   outline: none;
   color: ${(props) =>
     props.type === "disabled"
-      ? "var(--gray-light, #EEE)"
+      ? "var(--gray-light, #ddd)"
       : "var(--black, #333)"};
 
   &::placeholder {
-    color: var(--gray-light, #eee);
+    color: var(--gray-light, #ddd);
   }
 `;
 
@@ -75,12 +75,12 @@ const StyledTextarea = styled.textarea<{
   height: ${(props) => props.height}px;
   outline: none;
   color: ${(props) =>
-    props.type === "disabled" ? "color: var(--gray-light, #EEE);" : "none"};
+    props.type === "disabled" ? "color: var(--gray-light, #ddd);" : "none"};
   resize: none;
   overflow: hidden;
 
   &::placeholder {
-    color: var(--gray-light, #eee);
+    color: var(--gray-light, #ddd);
   }
 `;
 

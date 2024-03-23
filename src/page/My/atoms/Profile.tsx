@@ -23,7 +23,7 @@ const ProfileInner = styled.div`
   gap: 16px;
   border-radius: 16px;
   background: var(--white, #fff);
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
 `;
 
 const BasicContent = styled.div`
@@ -42,7 +42,7 @@ const ImageOuter = styled.div`
   gap: 10px;
   flex-shrink: 0;
   border-radius: 16px;
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
 `;
 
 const StyledImage = styled.img`

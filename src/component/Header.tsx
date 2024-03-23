@@ -32,8 +32,8 @@ const Header = () => {
     switch (path) {
       case "/":
         return "logo";
-      case "/present":
-        return "present";
+      case "/info":
+        return "info";
       default:
         return "logo";
     }
@@ -46,7 +46,7 @@ const Header = () => {
         <img
           src={logo}
           alt="logo"
-          onClick={() => navigate('/')}
+          onClick={() => navigate("/")}
           style={{ cursor: "pointer" }}
         />
       ) : (
@@ -54,7 +54,7 @@ const Header = () => {
           <img
             src={chevronLeft}
             alt="back"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/")}
             style={{ cursor: "pointer" }}
           />
         </HeaderNav>

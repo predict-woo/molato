@@ -6,7 +6,7 @@ import present_selected from "../assets/present-selected.svg";
 import molato from "../assets/molato.svg";
 import user from "../assets/user.svg";
 import user_selected from "../assets/user-selected.svg";
-import useAxios from '../hook/useAxios';
+import useAxios from "../hook/useAxios";
 
 const BottomNavigationBar = styled.div`
   position: sticky;
@@ -16,12 +16,12 @@ const BottomNavigationBar = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
-  width: 100%; 
+  width: 100%;
   height: 60px;
   margin: 0 auto;
   padding: 0px 16px;
-  border-top: 1px solid #e2e2e2; 
-  z-index: 1000; 
+  border-top: 1px solid #e2e2e2;
+  z-index: 1000;
 `;
 
 const IconContainer = styled.div`
@@ -40,7 +40,7 @@ const NotificationIcon = styled.div`
   height: 18px;
   background-color: #d25151;
   border-radius: 50%;
-  border-style:solid;
+  border-style: solid;
   border-color: #ffffff;
   border-width: 2px;
   display: flex;
@@ -59,13 +59,13 @@ const BottomNavigation: React.FC = () => {
   const fetchAlarmCnt = async () => {
     try {
       const response = await axiosReq({
-        url: 'https://api.molato.fun/user/newCnt',
-        method: 'get',
+        url: "https://api.molato.fun/user/newCnt",
+        method: "get",
         params: {
-          'Cookie': document.cookie
+          Cookie: document.cookie,
         },
       });
-      setNotiCnt(response['total']);
+      setNotiCnt(response["total"]);
     } catch (error) {
       console.log("An error occurred while fetching alarm count:", error);
       setNotiCnt(0); // 에러 발생 시 알람 개수를 0으로 설정
@@ -84,16 +84,15 @@ const BottomNavigation: React.FC = () => {
     <BottomNavigationBar>
       <IconContainer>
         <Link to="/history" className="nav-link">
-          <img src={pathname === "/history" ? present_selected : present} alt="History" />
+          <img
+            src={pathname === "/history" ? present_selected : present}
+            alt="History"
+          />
         </Link>
-        {notiCnt > 0 && (
-          <NotificationIcon>
-            {notiCnt}
-          </NotificationIcon>
-        )}
+        {notiCnt > 0 && <NotificationIcon>{notiCnt}</NotificationIcon>}
       </IconContainer>
       <IconContainer>
-        <Link to="/present" className="nav-link">
+        <Link to="/" className="nav-link">
           <img src={molato} alt="Present" />
         </Link>
       </IconContainer>

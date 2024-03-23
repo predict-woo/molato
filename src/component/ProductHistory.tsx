@@ -19,7 +19,7 @@ const ProductInfoInner = styled.div`
   border-radius: 16px;
   background: var(--white, #fff);
   box-shadow: -1px 2px 4px 0px rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
   box-sizing: border-box;
   cursor: pointer;
 `;
@@ -27,7 +27,7 @@ const ProductInfoInner = styled.div`
 const ProductImage = styled.img`
   width: 60px;
   height: 60px;
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
   border-radius: 16px;
 `;
 
@@ -90,12 +90,12 @@ const ProductHistory = ({ gift, onClick }: Props) => {
 
     // 날짜 형식 변환 (년-월-일)
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
 
     // 한국 시간대로 변환된 날짜 정보 반환
     return `${year}-${month}-${day}`;
-}
+  }
 
   useEffect(() => {
     getProductFromGift();

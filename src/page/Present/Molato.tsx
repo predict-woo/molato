@@ -9,6 +9,8 @@ import UserCard from "component/UserCard";
 import { useEffect, useState } from "react";
 import useAxios from "hook/useAxios";
 import { User } from "types";
+import { H } from "component/H";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   nextStep: () => void;
@@ -22,7 +24,17 @@ const UserCardList = styled.div`
   gap: 12px;
 `;
 
+const InfoText = styled(H)`
+  width: 100%;
+  color: var(--primary-light, #ed9999) !important;
+  text-decoration: underline;
+  cursor: pointer;
+  text-align: center;
+`;
+
 const Molato = ({ nextStep, selectedUser, select }: Props) => {
+  const navigate = useNavigate();
+
   const axios = useAxios();
   const [userList, setUserList] = useState<User[]>([]);
 
@@ -66,6 +78,7 @@ const Molato = ({ nextStep, selectedUser, select }: Props) => {
         onClick={nextStep}
         disabled={selectedUser === null}
       />
+      <InfoText onClick={() => navigate("/info")}>몰라또가 뭐에또?</InfoText>
     </>
   );
 };

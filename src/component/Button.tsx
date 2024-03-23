@@ -23,8 +23,8 @@ const ButtonInner = styled.button`
 
   &:disabled {
     background: var(--white, #fff);
-    color: var(--gray-light, #eee);
-    border: 1px solid var(--gray-light, #eee);
+    color: var(--gray-light, #ddd);
+    border: 1px solid var(--gray-light, #ddd);
     cursor: not-allowed;
   }
 `;

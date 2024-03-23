@@ -32,7 +32,7 @@ const ImageOuter = styled.div`
   gap: 10px;
   flex-shrink: 0;
   border-radius: 16px;
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
 `;
 
 const StyledImage = styled.img`

@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "page/Home";
+import Info from "page/Info";
 import styled from "styled-components";
 import Present from "page/Present";
 import History from "page/History";
@@ -37,8 +37,8 @@ function App() {
       <AppContent>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/present" element={<Present />} />
+            <Route index element={<Present />} />
+            <Route path="/info" element={<Info />} />
             <Route path="/history/:id" element={<HistoryItem />} />
             <Route path="/history" element={<History />} />
             <Route path="/my" element={<My />} />

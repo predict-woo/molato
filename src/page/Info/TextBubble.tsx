@@ -20,7 +20,7 @@ const TextBubbleInner = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  border: 1px solid var(--gray-light, #eee);
+  border: 1px solid var(--gray-light, #ddd);
   background: #fff;
   color: var(--black, #333);
   text-align: center;
@@ -58,7 +58,7 @@ const TextBubble = ({ children }: Props) => {
             <path
               d="M17.8342 2.00732H2.33423C2.33423 7.00732 5.33423 12.5073 9.83423 15.5073C21.7321 23.4393 32.8342 21.0073 28.8342 19.0073C24.8342 17.0073 21.2934 14.7726 19.3342 11.5073C17.8342 9.00732 17.5009 4.34066 17.8342 2.00732Z"
               fill="white"
-              stroke="#EEEEEE"
+              stroke="#dddddd"
             />
             <rect x="1" y="1" width="19" height="2" fill="white" />
           </svg>
