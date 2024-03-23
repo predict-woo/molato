@@ -84,7 +84,9 @@ const UserCard = ({ user, selected, onClick }: Props) => {
       </ImageOuter>
       <TextOuter>
         <TextName>{user.name}</TextName>
-        <TextIntroduction>{user.introduction}</TextIntroduction>
+        {user.introduction && (
+          <TextIntroduction>{user.introduction}</TextIntroduction>
+        )}
       </TextOuter>
     </UserCardInner>
   );
