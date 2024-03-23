@@ -1,5 +1,5 @@
 import { modalState } from "atom/modal";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import Button from "./Button";
 
