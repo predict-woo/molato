@@ -27,8 +27,8 @@ const BottomNavigation: React.FC = () => {
   return (
     <BottomNavigationBar>
       <div>
-        <Link to="/present" className="nav-link" onClick={() => setActiveNav('present')}>
-          <img src={activeNav == 'present' ? present_selected : present}></img>
+        <Link to="/history" className="nav-link" onClick={() => setActiveNav('history')}>
+          <img src={activeNav == 'history' ? present_selected : present}></img>
         </Link>
       </div>
       <div>
