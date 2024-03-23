@@ -73,14 +73,7 @@ const UserCard = ({ user, selected, onClick }: Props) => {
   return (
     <UserCardInner selected={!!selected} onClick={onClick}>
       <ImageOuter>
-        <StyledImage
-          src={
-            user.profilePhoto === ""
-              ? "/profile/default.svg"
-              : user.profilePhoto
-          }
-          alt="profile"
-        />
+        <StyledImage src={user.profilePhoto} alt="profile" />
       </ImageOuter>
       <TextOuter>
         <TextName>{user.name}</TextName>
