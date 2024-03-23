@@ -11,6 +11,7 @@ const HeaderInner = styled.div`
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+  flex-grow: 0;
   box-sizing: border-box;
 `;
 
@@ -18,11 +19,19 @@ const HeaderNav = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  flex: 1 0 0;
+`;
+
+const TotalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
 `;
 
 const RouteContainer = styled.div`
   margin: 24px;
+  flex-grow: 1;
+  box-sizing: border-box;
 `;
 
 const Header = () => {
@@ -39,7 +48,7 @@ const Header = () => {
   };
 
   return (
-    <>
+    <TotalContainer>
       <HeaderInner>
         {path2Type(pathname) === "logo" ? (
           <img src={logo} alt="logo" />
@@ -63,7 +72,7 @@ const Header = () => {
       <RouteContainer>
         <Outlet />
       </RouteContainer>
-    </>
+    </TotalContainer>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import logoSmall from "assets/logo-small.png";
 
 type Props = {
   children: React.ReactNode;
@@ -7,38 +8,63 @@ type Props = {
 
 const TextBubbleOuter = styled.div`
   display: flex;
-  padding-bottom: 19px;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
+  width: "fit-content";
+  gap: 19px;
 `;
 
 const TextBubbleInner = styled.div`
-  display: flex;
+  position: relative;
   padding: 16px;
   justify-content: center;
   align-items: center;
   border-radius: 16px;
   border: 1px solid var(--gray-light, #eee);
   background: #fff;
+  color: var(--black, #333);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+`;
+
+const TextBubbleBottom = styled.div`
+  position: absolute;
+  bottom: -26px;
+  right: 60px;
+`;
+
+const StyledImage = styled.img`
+  width: 60px;
+  height: 60px;
 `;
 
 const TextBubble = ({ children }: Props) => {
   return (
     <TextBubbleOuter>
-      <TextBubbleInner>{children}</TextBubbleInner>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="30"
-        height="21"
-        viewBox="0 0 30 21"
-        fill="none"
-      >
-        <path
-          d="M16.8342 1.00732H1.33423C1.33423 6.00732 4.33423 11.5073 8.83423 14.5073C20.7321 22.4393 31.8342 20.0073 27.8342 18.0073C23.8342 16.0073 20.2934 13.7726 18.3342 10.5073C16.8342 8.00732 16.5009 3.34066 16.8342 1.00732Z"
-          fill="white"
-          stroke="#EEEEEE"
-        />
-      </svg>
+      <TextBubbleInner>
+        {children}{" "}
+        <TextBubbleBottom>
+          <svg
+            width="32"
+            height="23"
+            viewBox="0 0 32 23"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.8342 2.00732H2.33423C2.33423 7.00732 5.33423 12.5073 9.83423 15.5073C21.7321 23.4393 32.8342 21.0073 28.8342 19.0073C24.8342 17.0073 21.2934 14.7726 19.3342 11.5073C17.8342 9.00732 17.5009 4.34066 17.8342 2.00732Z"
+              fill="white"
+              stroke="#EEEEEE"
+            />
+            <rect x="1" y="1" width="19" height="2" fill="white" />
+          </svg>
+        </TextBubbleBottom>
+      </TextBubbleInner>
+      <StyledImage src={logoSmall} alt="logo" />
     </TextBubbleOuter>
   );
 };
