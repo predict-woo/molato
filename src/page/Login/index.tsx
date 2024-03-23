@@ -44,6 +44,7 @@ const SignInText = styled.div`
 `;
 
 const UH = styled(H)`
+  color: var(--primary-light, #ed9999) !important;
   text-decoration: underline;
 `;
 

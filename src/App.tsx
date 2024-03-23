@@ -8,6 +8,7 @@ import HistoryItem from "page/History/HistoryItem";
 import Login from "page/Login";
 import My from "page/My";
 import Layout from "page/Layout";
+import Signin from "page/Signin";
 
 const AppInner = styled.div`
   display: flex;
@@ -38,6 +39,8 @@ function App() {
             <Route path="/my" element={<My />} />
           </Route>
           <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="*" element={<div>Not Found</div>} />
         </Routes>
       </AppContent>
     </AppInner>

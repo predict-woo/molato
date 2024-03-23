@@ -5,7 +5,7 @@ type Props = {
   placeholder: string;
   value?: string;
   onChange?: (e: React.ChangeEvent) => void;
-  type: "default" | "disabled" | "error";
+  type: "default" | "disabled" | "error" | "password";
   multiline?: boolean;
   disabled?: boolean;
 };
@@ -38,7 +38,9 @@ const TextInputError = styled(TextInputInner)`
   background: var(--white, #fff);
 `;
 
-const StyledInput = styled.input<{ type: "default" | "disabled" | "error" }>`
+const StyledInput = styled.input<{
+  type: "default" | "disabled" | "error" | "password";
+}>`
   width: 100%;
   border: none;
   background: none;
@@ -59,7 +61,7 @@ const StyledInput = styled.input<{ type: "default" | "disabled" | "error" }>`
 `;
 
 const StyledTextarea = styled.textarea<{
-  type: "default" | "disabled" | "error";
+  type: "default" | "disabled" | "error" | "password";
   height: number;
 }>`
   width: 100%;
@@ -84,6 +86,7 @@ const StyledTextarea = styled.textarea<{
 
 const TextInputs = {
   default: TextInputDefault,
+  password: TextInputDefault,
   disabled: TextInputDisabled,
   error: TextInputError,
 };
