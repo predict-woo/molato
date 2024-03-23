@@ -1,7 +1,9 @@
 export const isDev = import.meta.env.DEV; // automatically provided
-export const backServer = isDev
-  ? import.meta.env.VITE_DEV_BACK_URL
-  : import.meta.env.VITE_PROD_BACK_URL; // use proxy in dev mode
+// export const backServer = isDev
+//   ? import.meta.env.VITE_DEV_BACK_URL
+//   : import.meta.env.VITE_PROD_BACK_URL; // use proxy in dev mode
+
+export const backServer = import.meta.env.VITE_PROD_BACK_URL; // use proxy in dev mode
 
 // devicet-type 감지
 const userAgent = navigator.userAgent.toLowerCase();
