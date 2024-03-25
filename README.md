@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6b4a1cd8-9abd-451f-b76e-dac147535dae/deploy-status)](https://app.netlify.com/sites/molato/deploys)
 
-## [Molato Web](https://molato.fun).
+## [Molato Web](https://molato.fun)
 
 ![image](https://github.com/predict-woo/molato/assets/63383967/c52b3ede-06af-4209-a014-64048ebe30c8)
 
